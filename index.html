@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=2.0">
+  <title>Тест уровня организации психики | 5 уровней</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #f5f3f0;
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', system-ui, sans-serif;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      margin: 0;
+      color: #2e2a27;
+    }
+    .container {
+      max-width: 800px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 32px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06), 0 8px 20px rgba(0, 0, 0, 0.04);
+      padding: 30px 28px;
+      margin: 20px 0;
+      transition: all 0.2s ease;
+    }
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: -0.5px;
+      color: #3e362e;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+    .subtitle {
+      color: #7b6e64;
+      font-size: 1rem;
+      margin-bottom: 24px;
+      border-left: 4px solid #c9b99a;
+      padding-left: 16px;
+      font-style: italic;
+      background: #faf8f5;
+      border-radius: 0 12px 12px 0;
+    }
+    .progress-section {
+      background: #f3efe9;
+      border-radius: 60px;
+      padding: 12px 18px;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-weight: 500;
+    }
+    .progress-bar-bg {
+      flex: 2;
+      min-width: 180px;
+      height: 10px;
+      background: #e1d9cf;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: #7c6a54;
+      border-radius: 20px;
+      transition: width 0.2s ease;
+    }
+    .question-block {
+      margin: 20px 0 18px;
+      padding: 18px 20px;
+      background: #fdfdfb;
+      border-radius: 20px;
+      border: 1px solid #ede6dc;
+      transition: background 0.15s;
+    }
+    .question-text {
+      font-size: 1.15rem;
+      font-weight: 500;
+      margin-bottom: 16px;
+      color: #3f3a34;
+      line-height: 1.4;
+    }
+    .binary-options {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .binary-options label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      background: #f6f2ed;
+      padding: 10px 24px;
+      border-radius: 40px;
+      border: 1.5px solid #d6ccbf;
+      transition: all 0.2s;
+      user-select: none;
+      color: #4e443b;
+      font-weight: 500;
+    }
+    .binary-options input[type="radio"] {
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border: 2px solid #a59582;
+      border-radius: 50%;
+      margin: 0;
+      transition: 0.2s;
+      position: relative;
+      cursor: pointer;
+      background: white;
+    }
+    .binary-options input[type="radio"]:checked {
+      border-color: #5e4b38;
+      background: #5e4b38;
+      box-shadow: inset 0 0 0 4px white;
+    }
+    .binary-options label:has(input:checked) {
+      background: #e7dfd3;
+      border-color: #8b7a65;
+      color: #2b241d;
+      font-weight: 600;
+    }
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 28px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    button {
+      background: #f3efe8;
+      border: 1.5px solid #ccc0b0;
+      padding: 14px 28px;
+      border-radius: 40px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #3e342b;
+      cursor: pointer;
+      transition: 0.2s;
+      background: #ffffff;
+      letter-spacing: 0.3px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    }
+    button:hover:not(:disabled) {
+      background: #e9dfd2;
+      border-color: #a28e78;
+      color: #1f1a16;
+    }
+    button:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      background: #f1ede8;
+      border-color: #d9d0c4;
+    }
+    .primary-btn {
+      background: #5f4d3c;
+      border-color: #5f4d3c;
+      color: white;
+      font-weight: 600;
+      box-shadow: 0 6px 14px rgba(95, 77, 60, 0.25);
+    }
+    .primary-btn:hover:not(:disabled) {
+      background: #4a392a;
+      border-color: #3e2f22;
+      color: white;
+    }
+    .results-container {
+      background: #fdfaf7;
+      border-radius: 28px;
+      padding: 24px;
+      margin-top: 20px;
+      border: 1px solid #e7dbcd;
+    }
+    .level-title {
+      font-size: 2rem;
+      font-weight: 500;
+      margin: 12px 0 18px;
+      color: #4f3c2e;
+      border-bottom: 2px dashed #d6c6b2;
+      padding-bottom: 10px;
+    }
+    .defense-box {
+      background: #f9f4ed;
+      padding: 18px;
+      border-radius: 18px;
+      margin: 20px 0;
+    }
+    hr {
+      border: 0.5px solid #e2d7ca;
+      margin: 22px 0;
+    }
+    .small-note {
+      font-size: 0.9rem;
+      color: #6b6258;
+      margin-top: 12px;
+    }
+    .auto-advance-hint {
+      text-align: center;
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: #8b7a65;
+      font-style: italic;
+    }
+    @media (max-width: 500px) {
+      .container {
+        padding: 20px 16px;
+      }
+      .binary-options label {
+        padding: 8px 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container" id="app-container">
+  <h1>🧠 Уровень организации психики</h1>
+  <div class="subtitle">Оценка по 5 уровням: от условно здорового до психотического</div>
+
+  <!-- Динамический контент через JS -->
+  <div id="dynamic-content"></div>
+</div>
+
+<script>
+  (function() {
+    // ----- ВОПРОСЫ (50) -----
+    const questions = [
+      // Блок 1: Тестирование реальности (1-10)
+      "Бывает ли, что вы видите, слышите или ощущаете то, чего другие люди в тот же момент не замечают?",
+      "Уверены ли вы, что за вами следят или существует заговор против вас?",
+      "Окружающие говорят, что ваши идеи или убеждения странные и оторванные от жизни?",
+      "Случается, что вы не можете понять, приснилось ли событие или произошло на самом деле?",
+      "Вы чувствуете, что ваши мысли контролируются внешней силой или техникой?",
+      "Окружающие люди или предметы кажутся вам ненастоящими, будто между вами и миром стекло?",
+      "Вам кажется, что ваши близкие подменили (выглядят так же, но внутри чужие)?",
+      "Вы убеждены, что обладаете особым даром (чтение мыслей, пророчество), в который другие не верят?",
+      "Ваша речь настолько ускоряется или запутывается, что другие перестают вас понимать?",
+      "Вы замечаете тайные знаки и послания лично вам в новостях, фильмах или поведении прохожих?",
+      // Блок 2: Идентичность (11-20)
+      "Ваше мнение о себе кардинально меняется несколько раз в день (от гения до ничтожества)?",
+      "Вы не можете описать свой характер 3-5 устойчивыми прилагательными, в которых уверены?",
+      "В разных компаниях вы становитесь настолько разным человеком, что вам становится страшно?",
+      "Ваши цели и планы на жизнь меняются кардинально каждые несколько месяцев?",
+      "Вам трудно понять, что вы на самом деле любите, если рядом нет никого, кто бы это одобрил?",
+      "Одиночество вызывает панику и ощущение, что вы исчезаете, перестаете существовать?",
+      "Вы часто ловите себя на неосознанном копировании внешности или манер значимого человека?",
+      "Вы чувствуете себя то слишком молодым (ребенком), то слишком старым, вне зависимости от возраста?",
+      "Ваша сексуальная ориентация или идентичность вызывает глубокую дезориентирующую растерянность?",
+      "Вы не понимаете своих чувств: в теле что-то происходит, но вы не можете понять, злость это или радость?",
+      // Блок 3: Защитные механизмы и отношения (21-30)
+      "Во время ссоры вы можете полностью забыть, за что любите партнера, и начать считать его врагом?",
+      "Вы часто обвиняете других в тех поступках или чувствах, которые свойственны вам самим?",
+      "Окружающие жалуются, что вы слишком давите, контролируете или требуете много внимания?",
+      "Вы склонны обесценивать то, чего не смогли получить (например, работа, которую не дали, сразу стала ужасной)?",
+      "Чтобы успокоиться после стресса, вы используете алкоголь, запрещенные вещества, самоповреждения или уходите в многочасовой сон?",
+      "Ваши отношения напоминают американские горки: от идеализации до сильнейшего отвращения?",
+      "Вы физически ощущаете боль или болезнь при сильном стрессе, и врачи не находят причин?",
+      "В стрессе вы перестаете чувствовать свое тело или его части (онемение без медицинских причин)?",
+      "Вы не помните значительные травматические куски из своей жизни (детство, аварии)?",
+      "Вы часто провоцируете близких, чтобы убедиться, что они вас не бросят, даже ценой скандала?",
+      // Блок 4: Эмоциональная регуляция и привязанность (31-40)
+      "Ярость накрывает вас настолько внезапно, что вы не замечаете перехода из спокойствия в бешенство?",
+      "Вы боитесь, что значимые люди навсегда исчезнут, если вы на минуту потеряете контакт?",
+      "Внутреннее напряжение спадает только после крика, битья посуды или физической агрессии?",
+      "Эйфория может резко смениться глубокой тоской или раздражением без видимой причины?",
+      "Вы чувствуете, что окружающие обязаны догадываться о ваших потребностях без слов, и злитесь, если они не догадываются?",
+      "Вам трудно оставаться одному в тишине, вы всегда ищете внешнюю стимуляцию или компанию?",
+      "Когда партнер или друг хочет заняться своими делами, вы воспринимаете это как предательство?",
+      "Окружающие говорят, что ваша эмоциональная реакция не соответствует событию (слишком сильная или слабая)?",
+      "Вы чувствуете хроническую пустоту в груди, которую невозможно заполнить едой, покупками или сексом?",
+      "Вы не понимаете, как можно простить человека: если он ошибся, значит он «плохой», и исправить нельзя?",
+      // Блок 5: Маркеры психотического риска (41-50)
+      "У вас есть убеждение, что ваше тело гниет или от вас исходит страшный запах, хотя врачи опровергают?",
+      "Случаются ли провалы во времени (обнаруживаете себя в незнакомом месте, не помня как попали)?",
+      "Мысли в голове звучат как громкие чужие голоса, комментирующие или приказывающие вам?",
+      "Вы перестаете на длительное время чувствовать какие-либо эмоции (не печаль, а отсутствие чувств, как у куклы)?",
+      "Вам кажется, что вы умерли, а ваше тело — пустая оболочка?",
+      "Вы видите в зеркале чужое или искаженное лицо (буквально, не метафорически)?",
+      "Вы считаете, что не нуждаетесь в еде или сне, потому что энергия поступает из космоса или другого источника?",
+      "Буквы или слова расползаются, меняют смысл на противоположный прямо у вас на глазах?",
+      "Вы вышли из тела и наблюдаете за собой со стороны (часто и без желания)?",
+      "За последний год были ситуации, когда окружающие вызывали скорую или полицию из-за вашего эмоционального состояния?"
+    ];
+
+    // Состояние
+    const totalQuestions = questions.length;
+    let answers = new Array(totalQuestions).fill(null); // null / true / false
+    let currentIndex = 0;
+    let testCompleted = false;
+    let resultData = null;
+
+    // DOM элемент для рендера
+    const dynamicContent = document.getElementById('dynamic-content');
+
+    // Вспомогательные функции
+    function getAnswerValue(index) {
+      return answers[index] === true ? 1 : 0; // ДА = 1, НЕТ = 0
+    }
+
+    function calculateScores() {
+      let block1 = 0, block2 = 0, block3 = 0, block4 = 0, block5 = 0;
+      for (let i = 0; i < 10; i++) block1 += getAnswerValue(i);      // 0-9
+      for (let i = 10; i < 20; i++) block2 += getAnswerValue(i);    // 10-19
+      for (let i = 20; i < 30; i++) block3 += getAnswerValue(i);    // 20-29
+      for (let i = 30; i < 40; i++) block4 += getAnswerValue(i);    // 30-39
+      for (let i = 40; i < 50; i++) block5 += getAnswerValue(i);    // 40-49
+      return { block1, block2, block3, block4, block5 };
+    }
+
+    function determineLevel(scores) {
+      const { block1, block2, block3, block4, block5 } = scores;
+      
+      // Психотический уровень: блок5 >0 или блок1 >= 8
+      if (block5 > 0 || block1 >= 8) {
+        return 5; // Психотический
+      }
+      
+      // Нижний пограничный
+      if (block1 >= 5 || (block2 >= 16 && block3 >= 16) || (block4 >= 20 && block3 >= 16)) {
+        return 4;
+      }
+      
+      // Верхний пограничный
+      if ((block3 >= 11 && block2 >= 12) || (block4 >= 14 && block2 >= 12) || block3 >= 14) {
+        return 3;
+      }
+      
+      // Невротический
+      if ((block2 >= 6 && block2 <= 12) || (block4 >= 7 && block4 <= 15) || block3 >= 5) {
+        return 2;
+      }
+      
+      // Условно здоровый
+      return 1;
+    }
+
+    function getLevelDescription(level, scores) {
+      const defenseMechanisms = [];
+      if (scores.block3 >= 11) defenseMechanisms.push("Расщепление (обесценивание/идеализация)");
+      if (scores.block3 >= 7) defenseMechanisms.push("Проекция");
+      if (scores.block2 >= 12) defenseMechanisms.push("Диффузная идентичность");
+      if (scores.block1 >= 4) defenseMechanisms.push("Искажение реальности");
+      if (scores.block4 >= 14) defenseMechanisms.push("Эмоциональная дисрегуляция");
+      if (scores.block5 > 0) defenseMechanisms.push("Психотические симптомы (галлюцинаторные/бредовые)");
+      if (defenseMechanisms.length === 0) defenseMechanisms.push("Преимущественно зрелые защиты (юмор, сублимация, альтруизм)");
+
+      let levelText = "";
+      let rec = "";
+
+      switch(level) {
+        case 1:
+          levelText = "1. Условно здоровый (Норма)";
+          rec = "Ваша психика организована гибко. Вы сохраняете контакт с реальностью, идентичность целостна, защиты зрелые. Рекомендуется поддерживать ментальную гигиену и личностный рост.";
+          break;
+        case 2:
+          levelText = "2. Невротический уровень";
+          rec = "Присутствует внутренний конфликт, чувство вины, тревога. Тестирование реальности сохранно. Хорошо поддается разговорной психотерапии (психодинамическая, гештальт).";
+          break;
+        case 3:
+          levelText = "3. Верхний пограничный уровень";
+          rec = "Отношения нестабильны, выражены примитивные защиты, но реальность в целом ясна. Рекомендована длительная терапия (DBT, схема-терапия).";
+          break;
+        case 4:
+          levelText = "4. Нижний пограничный уровень";
+          rec = "Выраженная диффузия идентичности, возможны микропсихотические эпизоды, самоповреждения. Требуется комбинированное лечение (психиатр + психолог).";
+          break;
+        case 5:
+          levelText = "5. Психотический уровень";
+          rec = "Нарушено тестирование реальности, присутствуют бредовые идеи или галлюцинации. Необходима срочная консультация психиатра и медикаментозная поддержка.";
+          break;
+        default: levelText = "Не определен";
+      }
+
+      return { levelText, rec, defenseMechanisms };
+    }
+
+    function finishTest() {
+      const scores = calculateScores();
+      const level = determineLevel(scores);
+      const { levelText, rec, defenseMechanisms } = getLevelDescription(level, scores);
+      
+      resultData = {
+        scores,
+        level,
+        levelText,
+        rec,
+        defenseMechanisms
+      };
+      testCompleted = true;
+      render();
+    }
+
+    function autoAdvance() {
+      if (testCompleted) return;
+      
+      // Если это последний вопрос и на него только что ответили
+      if (currentIndex === totalQuestions - 1 && answers[currentIndex] !== null) {
+        // Проверяем, все ли вопросы отвечены
+        if (answers.every(a => a !== null)) {
+          finishTest();
+        }
+        return;
+      }
+      
+      // Переход к следующему вопросу
+      if (currentIndex < totalQuestions - 1 && answers[currentIndex] !== null) {
+        currentIndex++;
+        render();
+      }
+    }
+
+    function goToPrev() {
+      if (currentIndex > 0 && !testCompleted) {
+        currentIndex--;
+        render();
+      }
+    }
+
+    function setAnswer(index, value) {
+      if (testCompleted) return;
+      const newAnswers = [...answers];
+      newAnswers[index] = value;
+      answers = newAnswers;
+      render();
+      
+      // Автоматический переход к следующему вопросу после выбора ответа
+      if (value !== null) {
+        // Небольшая задержка для визуального отклика
+        setTimeout(() => {
+          autoAdvance();
+        }, 300);
+      }
+    }
+
+    function restartTest() {
+      answers = new Array(totalQuestions).fill(null);
+      currentIndex = 0;
+      testCompleted = false;
+      resultData = null;
+      render();
+    }
+
+    // Рендер интерфейса
+    function render() {
+      if (testCompleted && resultData) {
+        renderResults();
+        return;
+      }
+
+      // Основной вид теста
+      const answeredCount = answers.filter(a => a !== null).length;
+      const progressPercent = Math.round((answeredCount / totalQuestions) * 100);
+      const currentQuestion = questions[currentIndex];
+      const currentAnswer = answers[currentIndex];
+      const isLastQuestion = currentIndex === totalQuestions - 1;
+
+      let html = `
+        <div class="progress-section">
+          <span>📋 Вопрос ${currentIndex+1}/${totalQuestions}</span>
+          <div class="progress-bar-bg">
+            <div class="progress-fill" style="width:${progressPercent}%;"></div>
+          </div>
+          <span>${progressPercent}%</span>
+        </div>
+        <div class="question-block">
+          <div class="question-text">${currentQuestion}</div>
+          <div class="binary-options">
+            <label class="${currentAnswer === true ? 'active-label' : ''}">
+              <input type="radio" name="q${currentIndex}" value="yes" ${currentAnswer === true ? 'checked' : ''} >
+              ✅ ДА
+            </label>
+            <label class="${currentAnswer === false ? 'active-label' : ''}">
+              <input type="radio" name="q${currentIndex}" value="no" ${currentAnswer === false ? 'checked' : ''} >
+              ❌ НЕТ
+            </label>
+          </div>
+        </div>
+        <div class="nav-buttons">
+          <button id="prev-btn" ${currentIndex === 0 ? 'disabled' : ''}>← Назад</button>
+          ${!isLastQuestion ? 
+            `<div class="auto-advance-hint">💡 Ответ будет переключён автоматически</div>` : 
+            `<div class="auto-advance-hint">💡 Ответив на этот вопрос, вы завершите тест</div>`
+          }
+        </div>
+        <div class="small-note" style="text-align:center; margin-top:10px;">Выберите ДА или НЕТ — произойдёт автоматический переход к следующему вопросу.</div>
+      `;
+
+      dynamicContent.innerHTML = html;
+
+      // Привязка событий
+      document.querySelectorAll(`input[name="q${currentIndex}"]`).forEach(radio => {
+        radio.addEventListener('change', (e) => {
+          const val = e.target.value === 'yes';
+          setAnswer(currentIndex, val);
+        });
+      });
+
+      document.getElementById('prev-btn')?.addEventListener('click', goToPrev);
+    }
+
+    function renderResults() {
+      const { scores, level, levelText, rec, defenseMechanisms } = resultData;
+      const defenseList = defenseMechanisms.map(d => `<li>🔹 ${d}</li>`).join('');
+
+      const html = `
+        <div class="results-container">
+          <h2 style="font-weight:400; color:#4a3e35;">📊 Результаты диагностики</h2>
+          <div class="level-title">${levelText}</div>
+          <p style="font-size:1.1rem; margin:12px 0 18px; background:#fff; padding:14px; border-radius:16px;">${rec}</p>
+          
+          <div class="defense-box">
+            <strong>🛡️ Защитные механизмы и особенности:</strong>
+            <ul style="margin-top:10px; padding-left:20px; list-style-type:none;">${defenseList}</ul>
+          </div>
+          
+          <hr>
+          <p><strong>📈 Баллы по блокам:</strong></p>
+          <ul style="list-style:none; padding-left:10px;">
+            <li>🔍 Тестирование реальности (Блок 1): ${scores.block1}/10</li>
+            <li>🪞 Идентичность (Блок 2): ${scores.block2}/10</li>
+            <li>⚔️ Примитивные защиты (Блок 3): ${scores.block3}/10</li>
+            <li>🌊 Эмоциональная регуляция (Блок 4): ${scores.block4}/10</li>
+            <li>⚠️ Психотические маркеры (Блок 5): ${scores.block5}/10</li>
+          </ul>
+          <p class="small-note" style="margin-top:16px;">* Интерпретация основана на структурной диагностике. Не является медицинским заключением.</p>
+          <button id="restart-btn" style="margin-top:24px; width:100%;" class="primary-btn">🔄 Пройти тест заново</button>
+        </div>
+      `;
+      dynamicContent.innerHTML = html;
+      document.getElementById('restart-btn').addEventListener('click', restartTest);
+    }
+
+    // Инициализация
+    render();
+  })();
+</script>
+</body>
+</html>

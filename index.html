@@ -1,557 +1,1155 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=2.0">
-  <title>Тест уровня организации психики | 5 уровней</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      background: #f5f3f0;
-      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', system-ui, sans-serif;
-      padding: 20px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      min-height: 100vh;
-      margin: 0;
-      color: #2e2a27;
-    }
-    .container {
-      max-width: 800px;
-      width: 100%;
-      background: #ffffff;
-      border-radius: 32px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06), 0 8px 20px rgba(0, 0, 0, 0.04);
-      padding: 30px 28px;
-      margin: 20px 0;
-      transition: all 0.2s ease;
-    }
-    h1 {
-      font-size: 2.2rem;
-      font-weight: 500;
-      letter-spacing: -0.5px;
-      color: #3e362e;
-      margin-bottom: 8px;
-      line-height: 1.2;
-    }
-    .subtitle {
-      color: #7b6e64;
-      font-size: 1rem;
-      margin-bottom: 24px;
-      border-left: 4px solid #c9b99a;
-      padding-left: 16px;
-      font-style: italic;
-      background: #faf8f5;
-      border-radius: 0 12px 12px 0;
-    }
-    .progress-section {
-      background: #f3efe9;
-      border-radius: 60px;
-      padding: 12px 18px;
-      margin-bottom: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      font-weight: 500;
-    }
-    .progress-bar-bg {
-      flex: 2;
-      min-width: 180px;
-      height: 10px;
-      background: #e1d9cf;
-      border-radius: 20px;
-      overflow: hidden;
-    }
-    .progress-fill {
-      width: 0%;
-      height: 100%;
-      background: #7c6a54;
-      border-radius: 20px;
-      transition: width 0.2s ease;
-    }
-    .question-block {
-      margin: 20px 0 18px;
-      padding: 18px 20px;
-      background: #fdfdfb;
-      border-radius: 20px;
-      border: 1px solid #ede6dc;
-      transition: background 0.15s;
-    }
-    .question-text {
-      font-size: 1.15rem;
-      font-weight: 500;
-      margin-bottom: 16px;
-      color: #3f3a34;
-      line-height: 1.4;
-    }
-    .binary-options {
-      display: flex;
-      gap: 24px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .binary-options label {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-      font-size: 1.1rem;
-      background: #f6f2ed;
-      padding: 10px 24px;
-      border-radius: 40px;
-      border: 1.5px solid #d6ccbf;
-      transition: all 0.2s;
-      user-select: none;
-      color: #4e443b;
-      font-weight: 500;
-    }
-    .binary-options input[type="radio"] {
-      appearance: none;
-      width: 18px;
-      height: 18px;
-      border: 2px solid #a59582;
-      border-radius: 50%;
-      margin: 0;
-      transition: 0.2s;
-      position: relative;
-      cursor: pointer;
-      background: white;
-    }
-    .binary-options input[type="radio"]:checked {
-      border-color: #5e4b38;
-      background: #5e4b38;
-      box-shadow: inset 0 0 0 4px white;
-    }
-    .binary-options label:has(input:checked) {
-      background: #e7dfd3;
-      border-color: #8b7a65;
-      color: #2b241d;
-      font-weight: 600;
-    }
-    .nav-buttons {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 28px;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-    button {
-      background: #f3efe8;
-      border: 1.5px solid #ccc0b0;
-      padding: 14px 28px;
-      border-radius: 40px;
-      font-size: 1rem;
-      font-weight: 600;
-      color: #3e342b;
-      cursor: pointer;
-      transition: 0.2s;
-      background: #ffffff;
-      letter-spacing: 0.3px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-    }
-    button:hover:not(:disabled) {
-      background: #e9dfd2;
-      border-color: #a28e78;
-      color: #1f1a16;
-    }
-    button:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-      background: #f1ede8;
-      border-color: #d9d0c4;
-    }
-    .primary-btn {
-      background: #5f4d3c;
-      border-color: #5f4d3c;
-      color: white;
-      font-weight: 600;
-      box-shadow: 0 6px 14px rgba(95, 77, 60, 0.25);
-    }
-    .primary-btn:hover:not(:disabled) {
-      background: #4a392a;
-      border-color: #3e2f22;
-      color: white;
-    }
-    .results-container {
-      background: #fdfaf7;
-      border-radius: 28px;
-      padding: 24px;
-      margin-top: 20px;
-      border: 1px solid #e7dbcd;
-    }
-    .level-title {
-      font-size: 2rem;
-      font-weight: 500;
-      margin: 12px 0 18px;
-      color: #4f3c2e;
-      border-bottom: 2px dashed #d6c6b2;
-      padding-bottom: 10px;
-    }
-    .defense-box {
-      background: #f9f4ed;
-      padding: 18px;
-      border-radius: 18px;
-      margin: 20px 0;
-    }
-    hr {
-      border: 0.5px solid #e2d7ca;
-      margin: 22px 0;
-    }
-    .small-note {
-      font-size: 0.9rem;
-      color: #6b6258;
-      margin-top: 12px;
-    }
-    .auto-advance-hint {
-      text-align: center;
-      margin-top: 8px;
-      font-size: 0.9rem;
-      color: #8b7a65;
-      font-style: italic;
-    }
-    @media (max-width: 500px) {
-      .container {
-        padding: 20px 16px;
-      }
-      .binary-options label {
-        padding: 8px 18px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Скрининг структуры личности</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #f4f1ec; font-family: 'Segoe UI', Roboto, system-ui, sans-serif; color: #2e2a27; padding: 20px; display: flex; justify-content: center; min-height: 100vh; }
+  .container { max-width: 820px; width: 100%; background: #fff; border-radius: 28px; box-shadow: 0 18px 40px rgba(0,0,0,.06); padding: 28px 26px; margin: 16px 0; }
+  h1 { font-size: 1.8rem; font-weight: 500; color: #3e362e; margin-bottom: 6px; }
+  .subtitle { color: #7b6e64; font-size: .95rem; margin-bottom: 22px; font-style: italic; border-left: 3px solid #c9b99a; padding-left: 14px; }
+  .intro-box { background: #faf8f5; border-radius: 18px; padding: 20px; margin-bottom: 22px; line-height: 1.5; font-size: .95rem; }
+  .intro-box strong { color: #4a3e35; }
+  .intro-box ul { margin: 10px 0 0 20px; }
+  .progress-section { background: #f3efe9; border-radius: 60px; padding: 10px 16px; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: .9rem; font-weight: 500; }
+  .progress-bar-bg { flex: 2; min-width: 140px; height: 8px; background: #e1d9cf; border-radius: 20px; overflow: hidden; }
+  .progress-fill { height: 100%; width: 0%; background: #7c6a54; transition: width .25s ease; }
+  .question-text { font-size: 1.2rem; font-weight: 500; color: #3f3a34; line-height: 1.4; margin-bottom: 22px; }
+  .likert { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+  .likert label { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border: 1.5px solid #e2d9cc; border-radius: 14px; cursor: pointer; transition: .15s; background: #fdfcfb; font-size: .98rem; }
+  .likert label:hover { background: #f6f2ed; border-color: #c9b99a; }
+  .likert input[type=radio] { appearance: none; width: 18px; height: 18px; border: 2px solid #a59582; border-radius: 50%; background: #fff; flex-shrink: 0; transition: .15s; cursor: pointer; }
+  .likert input[type=radio]:checked { border-color: #5e4b38; background: #5e4b38; box-shadow: inset 0 0 0 3px #fff; }
+  .likert label:has(input:checked) { background: #ece4d8; border-color: #8b7a65; font-weight: 600; }
+  .likert-num { font-weight: 600; color: #5e4b38; width: 18px; text-align: center; }
+  .nav-buttons { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  button { background: #fff; border: 1.5px solid #ccc0b0; padding: 12px 24px; border-radius: 40px; font-size: .95rem; font-weight: 600; color: #3e342b; cursor: pointer; transition: .2s; }
+  button:hover:not(:disabled) { background: #e9dfd2; border-color: #a28e78; }
+  button:disabled { opacity: .4; cursor: not-allowed; }
+  .primary-btn { background: #5f4d3c; border-color: #5f4d3c; color: #fff; }
+  .primary-btn:hover:not(:disabled) { background: #4a392a; border-color: #3e2f22; }
+  .results-container { background: #fdfaf7; border-radius: 22px; padding: 24px; border: 1px solid #e7dbcd; }
+  .level-title { font-size: 1.7rem; font-weight: 500; color: #4f3c2e; margin: 10px 0 16px; border-bottom: 2px dashed #d6c6b2; padding-bottom: 10px; }
+  .level-desc { background: #fff; padding: 16px; border-radius: 14px; margin-bottom: 20px; line-height: 1.5; font-size: .98rem; }
+  .refs { font-size: .82rem; color: #8b7a65; margin-top: 18px; line-height: 1.5; }
+  .disclaimer { background: #f4efe6; border-left: 4px solid #c9b99a; padding: 12px 16px; border-radius: 0 12px 12px 0; font-size: .85rem; color: #6b6258; margin-top: 18px; }
+  h3 { font-size: 1.05rem; font-weight: 600; color: #4a3e35; margin: 22px 0 10px; }
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+  .actions button { flex: 1; min-width: 140px; }
+  .email-status { font-size: .9rem; margin-top: 12px; text-align: center; padding: 10px; border-radius: 12px; background: #f6f2ed; }
+  .email-status.ok { color: #3d7a4a; background: #e8f2ea; }
+  .email-status.err { color: #a35c4a; background: #f6ebe7; }
+  .email-status.info { color: #6b6258; }
+  .tabs { display: flex; gap: 8px; margin: 16px 0 18px; flex-wrap: wrap; }
+  .tab-btn { flex: 1; min-width: 160px; padding: 12px 18px; border: 1.5px solid #d6ccbf; background: #fdfcfb; border-radius: 14px; cursor: pointer; font-size: .95rem; font-weight: 600; color: #6b6258; transition: .2s; text-align: center; }
+  .tab-btn:hover { background: #f6f2ed; }
+  .tab-btn.active { background: #5f4d3c; border-color: #5f4d3c; color: #fff; }
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
+  .chart-wrap { background: #fff; border-radius: 14px; padding: 16px; margin: 12px 0 18px; border: 1px solid #ede6dc; }
+  .chart-wrap canvas { max-height: 380px; }
+  .info-card { background: #fff; border-radius: 14px; padding: 16px 18px; margin-bottom: 14px; border: 1px solid #ede6dc; }
+  .info-card h4 { font-size: .95rem; font-weight: 600; color: #4a3e35; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .info-card ul { margin: 0; padding-left: 20px; line-height: 1.6; font-size: .93rem; }
+  .info-card ul li { margin-bottom: 4px; }
+  .info-card p { line-height: 1.55; font-size: .93rem; }
+  .info-card.strengths { border-left: 4px solid #7fa87f; background: #f6faf6; }
+  .info-card.attention { border-left: 4px solid #c9a86a; background: #fdf9f1; }
+  .info-card.risk-high { border-left: 4px solid #a35c4a; background: #fbf1ee; }
+  .info-card.risk-medium { border-left: 4px solid #c9a86a; background: #fdf9f1; }
+  .info-card.crisis { border-left: 4px solid #a35c4a; background: #fbf1ee; }
+  .info-card.validity-ok { border-left: 4px solid #7fa87f; background: #f6faf6; }
+  .info-card.validity-warn { border-left: 4px solid #c9a86a; background: #fdf9f1; }
+  .info-card.validity-bad { border-left: 4px solid #a35c4a; background: #fbf1ee; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 8px; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+  .badge-high { background: #a35c4a; color: #fff; }
+  .badge-med { background: #c9a86a; color: #fff; }
+  .levels-table { width: 100%; border-collapse: collapse; margin: 12px 0 8px; font-size: .88rem; background: #fff; border-radius: 12px; overflow: hidden; }
+  .levels-table th, .levels-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #ede6dc; vertical-align: top; }
+  .levels-table th { background: #f3efe9; color: #4a3e35; font-weight: 600; font-size: .82rem; text-transform: uppercase; letter-spacing: .04em; }
+  .levels-table tr:last-child td { border-bottom: none; }
+  .levels-table .range { font-weight: 600; color: #5e4b38; white-space: nowrap; }
+  .levels-table tr.active { background: #f0e8d9; }
+  .levels-table tr.active td { font-weight: 600; color: #2b241d; }
+  .levels-table tr.active .range::before { content: "▶ "; color: #8b7a65; }
+  .levels-table tr.partial { background: #f7f1e5; }
+  .levels-table tr.partial .range::before { content: "◐ "; color: #b09a7c; }
+  .levels-table tr.partial td { color: #5e4b38; }
+  .levels-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: .8rem; color: #7b6e64; margin: 6px 0 16px; }
+  .levels-legend span::before { margin-right: 4px; font-weight: 700; }
+  .levels-legend .l-main::before { content: "▶"; color: #8b7a65; }
+  .levels-legend .l-part::before { content: "◐"; color: #b09a7c; }
+  .levels-legend .l-none::before { content: "—"; color: #c9b99a; }
+  .raw-table { width: 100%; border-collapse: collapse; font-size: .82rem; background: #fff; border-radius: 10px; overflow: hidden; margin-top: 6px; }
+  .raw-table th, .raw-table td { padding: 6px 10px; border-bottom: 1px solid #ede6dc; text-align: left; }
+  .raw-table th { background: #f3efe9; font-weight: 600; color: #4a3e35; font-size: .75rem; text-transform: uppercase; }
+  .raw-table tr:last-child td { border-bottom: none; }
+  .raw-table .v-high { color: #a35c4a; font-weight: 700; }
+  .raw-table .v-med { color: #8b7a65; font-weight: 600; }
+  .raw-table .inv-mark { color: #b09a7c; font-weight: 700; margin-left: 4px; }
+  .threshold-banner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding: 12px 16px; border-radius: 12px; margin-bottom: 16px; font-size: .88rem; }
+  .threshold-banner.empirical { background: #fdf9f1; border-left: 4px solid #c9a86a; color: #6b6258; }
+  .threshold-banner.calibrated { background: #e8f2ea; border-left: 4px solid #7fa87f; color: #3d7a4a; }
+  .tb-right { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .mini-btn { padding: 5px 14px; font-size: .8rem; border-radius: 20px; border: 1.5px solid #a28e78; background: #fff; color: #5e4b38; cursor: pointer; font-weight: 600; }
+  .mini-btn:hover:not(:disabled) { background: #f6f2ed; }
+  .mini-btn:disabled { opacity: .4; cursor: not-allowed; }
+  .mode-select { display: flex; align-items: center; gap: 6px; font-size: .82rem; }
+  .mode-select select { padding: 4px 10px; border-radius: 8px; border: 1.5px solid #d6ccbf; font-size: .82rem; background: #fff; font-family: inherit; }
+  .score-row { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; font-size: .92rem; }
+  .score-label { width: 200px; flex-shrink: 0; color: #4a3e35; }
+  .score-bar-bg { flex: 1; height: 14px; background: #eae2d7; border-radius: 10px; overflow: hidden; }
+  .score-bar { height: 100%; border-radius: 10px; transition: width .5s ease; }
+  .score-val { width: 50px; text-align: right; font-weight: 600; color: #5e4b38; font-size: .88rem; }
+  .bar-struct { background: #8b7a65; }
+  .bar-trait { background: #b09a7c; }
+  .bar-reality { background: #a35c4a; }
+  .interpret-line { font-size: .82rem; padding: 6px 12px; border-radius: 8px; margin: 2px 0 12px 60px; line-height: 1.4; }
+  .interpret-line.level-ok, .interpret-line.level-l1, .interpret-line.level-l2 { background: #f6faf6; color: #3d7a4a; border-left: 3px solid #7fa87f; }
+  .interpret-line.level-warn, .interpret-line.level-l3, .interpret-line.level-partial { background: #fdf9f1; color: #8b6a2a; border-left: 3px solid #c9a86a; }
+  .interpret-line.level-bad, .interpret-line.level-l4, .interpret-line.level-psycho { background: #fbf1ee; color: #a35c4a; border-left: 3px solid #a35c4a; }
+  .interp-tag { display: inline-block; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; padding: 1px 7px; border-radius: 6px; background: rgba(0,0,0,.06); margin-right: 6px; }
+  .interp-only { margin-bottom: 12px; }
+  .interp-only strong { display: block; font-size: .88rem; color: #4a3e35; margin-bottom: 4px; }
+  @media (max-width: 520px) {
+    .container { padding: 22px 18px; }
+    .score-label { width: 130px; font-size: .82rem; }
+    h1 { font-size: 1.5rem; }
+    .actions button { min-width: 100%; }
+    .levels-table { font-size: .78rem; }
+    .levels-table th, .levels-table td { padding: 8px 8px; }
+    .tab-btn { min-width: 100%; }
+    .interpret-line { margin-left: 10px; }
+  }
+</style>
 </head>
 <body>
-<div class="container" id="app-container">
-  <h1>🧠 Уровень организации психики</h1>
-  <div class="subtitle">Оценка по 5 уровням: от условно здорового до психотического</div>
-
-  <!-- Динамический контент через JS -->
-  <div id="dynamic-content"></div>
+<div class="container">
+  <h1>🧠 Скрининг структуры личности</h1>
+  <div class="subtitle">Исследовательская версия · 69 пунктов · шкала 1–5</div>
+  <div id="content"></div>
 </div>
 
 <script>
-  (function() {
-    // ----- ВОПРОСЫ (50) -----
-    const questions = [
-      // Блок 1: Тестирование реальности (1-10)
-      "Бывает ли, что вы видите, слышите или ощущаете то, чего другие люди в тот же момент не замечают?",
-      "Уверены ли вы, что за вами следят или существует заговор против вас?",
-      "Окружающие говорят, что ваши идеи или убеждения странные и оторванные от жизни?",
-      "Случается, что вы не можете понять, приснилось ли событие или произошло на самом деле?",
-      "Вы чувствуете, что ваши мысли контролируются внешней силой или техникой?",
-      "Окружающие люди или предметы кажутся вам ненастоящими, будто между вами и миром стекло?",
-      "Вам кажется, что ваши близкие подменили (выглядят так же, но внутри чужие)?",
-      "Вы убеждены, что обладаете особым даром (чтение мыслей, пророчество), в который другие не верят?",
-      "Ваша речь настолько ускоряется или запутывается, что другие перестают вас понимать?",
-      "Вы замечаете тайные знаки и послания лично вам в новостях, фильмах или поведении прохожих?",
-      // Блок 2: Идентичность (11-20)
-      "Ваше мнение о себе кардинально меняется несколько раз в день (от гения до ничтожества)?",
-      "Вы не можете описать свой характер 3-5 устойчивыми прилагательными, в которых уверены?",
-      "В разных компаниях вы становитесь настолько разным человеком, что вам становится страшно?",
-      "Ваши цели и планы на жизнь меняются кардинально каждые несколько месяцев?",
-      "Вам трудно понять, что вы на самом деле любите, если рядом нет никого, кто бы это одобрил?",
-      "Одиночество вызывает панику и ощущение, что вы исчезаете, перестаете существовать?",
-      "Вы часто ловите себя на неосознанном копировании внешности или манер значимого человека?",
-      "Вы чувствуете себя то слишком молодым (ребенком), то слишком старым, вне зависимости от возраста?",
-      "Ваша сексуальная ориентация или идентичность вызывает глубокую дезориентирующую растерянность?",
-      "Вы не понимаете своих чувств: в теле что-то происходит, но вы не можете понять, злость это или радость?",
-      // Блок 3: Защитные механизмы и отношения (21-30)
-      "Во время ссоры вы можете полностью забыть, за что любите партнера, и начать считать его врагом?",
-      "Вы часто обвиняете других в тех поступках или чувствах, которые свойственны вам самим?",
-      "Окружающие жалуются, что вы слишком давите, контролируете или требуете много внимания?",
-      "Вы склонны обесценивать то, чего не смогли получить (например, работа, которую не дали, сразу стала ужасной)?",
-      "Чтобы успокоиться после стресса, вы используете алкоголь, запрещенные вещества, самоповреждения или уходите в многочасовой сон?",
-      "Ваши отношения напоминают американские горки: от идеализации до сильнейшего отвращения?",
-      "Вы физически ощущаете боль или болезнь при сильном стрессе, и врачи не находят причин?",
-      "В стрессе вы перестаете чувствовать свое тело или его части (онемение без медицинских причин)?",
-      "Вы не помните значительные травматические куски из своей жизни (детство, аварии)?",
-      "Вы часто провоцируете близких, чтобы убедиться, что они вас не бросят, даже ценой скандала?",
-      // Блок 4: Эмоциональная регуляция и привязанность (31-40)
-      "Ярость накрывает вас настолько внезапно, что вы не замечаете перехода из спокойствия в бешенство?",
-      "Вы боитесь, что значимые люди навсегда исчезнут, если вы на минуту потеряете контакт?",
-      "Внутреннее напряжение спадает только после крика, битья посуды или физической агрессии?",
-      "Эйфория может резко смениться глубокой тоской или раздражением без видимой причины?",
-      "Вы чувствуете, что окружающие обязаны догадываться о ваших потребностях без слов, и злитесь, если они не догадываются?",
-      "Вам трудно оставаться одному в тишине, вы всегда ищете внешнюю стимуляцию или компанию?",
-      "Когда партнер или друг хочет заняться своими делами, вы воспринимаете это как предательство?",
-      "Окружающие говорят, что ваша эмоциональная реакция не соответствует событию (слишком сильная или слабая)?",
-      "Вы чувствуете хроническую пустоту в груди, которую невозможно заполнить едой, покупками или сексом?",
-      "Вы не понимаете, как можно простить человека: если он ошибся, значит он «плохой», и исправить нельзя?",
-      // Блок 5: Маркеры психотического риска (41-50)
-      "У вас есть убеждение, что ваше тело гниет или от вас исходит страшный запах, хотя врачи опровергают?",
-      "Случаются ли провалы во времени (обнаруживаете себя в незнакомом месте, не помня как попали)?",
-      "Мысли в голове звучат как громкие чужие голоса, комментирующие или приказывающие вам?",
-      "Вы перестаете на длительное время чувствовать какие-либо эмоции (не печаль, а отсутствие чувств, как у куклы)?",
-      "Вам кажется, что вы умерли, а ваше тело — пустая оболочка?",
-      "Вы видите в зеркале чужое или искаженное лицо (буквально, не метафорически)?",
-      "Вы считаете, что не нуждаетесь в еде или сне, потому что энергия поступает из космоса или другого источника?",
-      "Буквы или слова расползаются, меняют смысл на противоположный прямо у вас на глазах?",
-      "Вы вышли из тела и наблюдаете за собой со стороны (часто и без желания)?",
-      "За последний год были ситуации, когда окружающие вызывали скорую или полицию из-за вашего эмоционального состояния?"
+(function() {
+  const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mwlpeakv';
+  const RECIPIENT_EMAIL = 'lordjarod@mail.ru';
+
+  // ============ ПОРОГИ ============
+  const DEFAULT_THRESHOLDS = {
+    structural: { l2: 1.8, l3: 2.5, l4: 3.5, l5: 4.5 },
+    subscale:   { low: 1.8, med: 2.5, high: 3.5 },
+    reality:    { psycho: 3.0, partial: 2.5 },
+    trait:      { low: 2.5, med: 3.5, high: 4.5 },
+    socDes:     { warn: 3.5, bad: 4.5 },
+    variab:     { low: 0.5, medium: 0.8 },
+    status: "empirical",
+    n: 0,
+    calibratedAt: null
+  };
+  const EMPIRICAL_THRESHOLDS = JSON.parse(JSON.stringify(DEFAULT_THRESHOLDS));
+
+  function loadThresholds() {
+    try {
+      const saved = localStorage.getItem('screening_thresholds');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        parsed._empirical = EMPIRICAL_THRESHOLDS;
+        return parsed;
+      }
+    } catch (e) {}
+    return { ...JSON.parse(JSON.stringify(DEFAULT_THRESHOLDS)), _empirical: EMPIRICAL_THRESHOLDS };
+  }
+
+  let THRESHOLDS = loadThresholds();
+  let DISPLAY_MODE = localStorage.getItem('screening_display_mode') || 'both';
+
+  // ============ ВОПРОСЫ (69) ============
+  const questions = [
+    { t: "Я часто не понимаю, кто я на самом деле.", b: "A", s: "Self" },
+    { t: "Мне трудно ставить и достигать собственные цели.", b: "A", s: "Self" },
+    { t: "Я не уверен(а), что мои чувства — действительно мои.", b: "A", s: "Self" },
+    { t: "Мне сложно описать себя несколькими устойчивыми словами.", b: "A", s: "Self" },
+    { t: "Я часто чувствую внутреннюю пустоту.", b: "A", s: "Self" },
+    { t: "Моё мнение о себе резко меняется в зависимости от ситуации.", b: "A", s: "Self" },
+    { t: "Мне трудно понимать чувства и намерения других людей.", b: "A", s: "Inter" },
+    { t: "Близкие отношения даются мне с большим трудом.", b: "A", s: "Inter" },
+    { t: "Я часто не замечаю, как мои слова ранят других.", b: "A", s: "Inter" },
+    { t: "Я избегаю близости, потому что боюсь быть отвергнутым(ой).", b: "A", s: "Inter" },
+    { t: "Мне трудно сотрудничать: я либо подчиняюсь, либо контролирую.", b: "A", s: "Inter" },
+    { t: "Я часто чувствую себя непонятым(ой) даже близкими.", b: "A", s: "Inter" },
+    { t: "Мои представления о себе противоречивы и не складываются в целостную картину.", b: "B", s: "Identity" },
+    { t: "В отношениях я часто перехожу от идеализации к обесцениванию.", b: "B", s: "Identity" },
+    { t: "Мне трудно сохранять последовательную линию поведения в разных ситуациях.", b: "B", s: "Identity" },
+    { t: "Я не уверен(а) в своих ценностях и в том, что для меня важно.", b: "B", s: "Identity" },
+    { t: "У меня нет устойчивого представления о себе — мне кажется, что я каждый раз начинаю заново.", b: "B", s: "Identity" },
+    { t: "Мне сложно соединить хорошие и плохие стороны одного человека.", b: "B", s: "Identity" },
+    { t: "Мои желания и цели часто противоречат друг другу.", b: "B", s: "Identity" },
+    { t: "У меня есть ясное и устойчивое представление о том, кто я.", b: "B", s: "Identity", inv: true },
+    { t: "Я склонен(на) видеть в других то, что не признаю в себе.", b: "B", s: "Defenses" },
+    { t: "Когда что-то идёт не так, я склонен(на) обвинять других.", b: "B", s: "Defenses" },
+    { t: "Люди для меня делятся на «хороших» и «плохих» без полутонов.", b: "B", s: "Defenses" },
+    { t: "Я могу полностью обесценить человека, который меня разочаровал.", b: "B", s: "Defenses" },
+    { t: "Я часто идеализирую людей, а потом жестоко в них разочаровываюсь.", b: "B", s: "Defenses" },
+    { t: "Мне трудно удерживать одновременно хорошее и плохое в одном человеке.", b: "B", s: "Defenses" },
+    { t: "Под давлением я могу отрицать очевидные факты.", b: "B", s: "Defenses" },
+    { t: "Я редко обвиняю других в своих неудачах.", b: "B", s: "Defenses", inv: true },
+    { t: "Иногда я сомневаюсь, реально ли то, что происходит вокруг.", b: "B", s: "Reality" },
+    { t: "Бывает, что мои мысли кажутся мне не совсем моими.", b: "B", s: "Reality" },
+    { t: "Мне случалось чувствовать, что другие могут влиять на мои мысли.", b: "B", s: "Reality" },
+    { t: "В стрессовых ситуациях я теряю ощущение реальности.", b: "B", s: "Reality" },
+    { t: "Иногда я не могу отличить сон от реальности.", b: "B", s: "Reality" },
+    { t: "Окружающие говорили мне, что мои убеждения оторваны от реальности.", b: "B", s: "Reality" },
+    { t: "Я часто испытываю тревогу или напряжение.", b: "C", s: "NegAff" },
+    { t: "Моё настроение часто меняется без причины.", b: "C", s: "NegAff" },
+    { t: "Я легко расстраиваюсь из-за мелочей.", b: "C", s: "NegAff" },
+    { t: "Я часто чувствую себя подавленным(ой).", b: "C", s: "NegAff" },
+    { t: "Мне трудно успокоиться, когда я расстроен(а).", b: "C", s: "NegAff" },
+    { t: "Обычно я спокоен(на) и уравновешен(а).", b: "C", s: "NegAff", inv: true },
+    { t: "Я предпочитаю одиночество общению.", b: "C", s: "Detach" },
+    { t: "Мне редко бывает приятно от близких отношений.", b: "C", s: "Detach" },
+    { t: "Я мало чем интересуюсь.", b: "C", s: "Detach" },
+    { t: "Мне трудно испытывать радость.", b: "C", s: "Detach" },
+    { t: "Я держу людей на расстоянии.", b: "C", s: "Detach" },
+    { t: "Мне приятно проводить время с близкими людьми.", b: "C", s: "Detach", inv: true },
+    { t: "Я готов(а) использовать других для достижения своих целей.", b: "C", s: "Antag" },
+    { t: "Мне нравится быть в центре внимания.", b: "C", s: "Antag" },
+    { t: "Я часто считаю, что другие должны мне уступать.", b: "C", s: "Antag" },
+    { t: "Я могу быть холодным(ой) и расчётливым(ой).", b: "C", s: "Antag" },
+    { t: "Мне трудно доверять людям, даже близким.", b: "C", s: "Antag" },
+    { t: "Я часто действую импульсивно.", b: "C", s: "Disinh" },
+    { t: "Мне трудно планировать и следовать плану.", b: "C", s: "Disinh" },
+    { t: "Я склонен(на) к рискованному поведению.", b: "C", s: "Disinh" },
+    { t: "Я легко отвлекаюсь.", b: "C", s: "Disinh" },
+    { t: "Мне трудно доводить начатое до конца.", b: "C", s: "Disinh" },
+    { t: "Иногда я чувствую, что вокруг происходит что-то странное, чего не замечают другие.", b: "C", s: "Psycho" },
+    { t: "У меня бывают необычные переживания, в которые трудно поверить другим.", b: "C", s: "Psycho" },
+    { t: "Мне случалось слышать или видеть то, что другие не слышали и не видели.", b: "C", s: "Psycho" },
+    { t: "Я верю в особые знаки и совпадения, значимые лично для меня.", b: "C", s: "Psycho" },
+    { t: "Окружающие считают мои идеи странными.", b: "C", s: "Psycho" },
+    { t: "Я всегда честен(на), даже когда это невыгодно.", b: "D", s: "SocDes" },
+    { t: "Я никогда не раздражаюсь, когда меня о чём-то просят.", b: "D", s: "SocDes" },
+    { t: "Я всегда признаю свои ошибки, даже если это неприятно.", b: "D", s: "SocDes" },
+    { t: "Я никогда не испытываю зависти к чужому успеху.", b: "D", s: "SocDes" },
+    { t: "Я всегда выполняю обещания, даже если это неудобно.", b: "D", s: "SocDes" },
+    { t: "Я никогда не говорю о людях плохо за их спиной.", b: "D", s: "SocDes" },
+    { t: "Я всегда вежлив(а), даже с неприятными мне людьми.", b: "D", s: "SocDes" },
+    { t: "Я никогда не откладываю важные дела на потом.", b: "D", s: "SocDes" }
+  ];
+
+  const subTitles = {
+    Self: "Самость", Inter: "Межличностное",
+    Identity: "Идентичность", Defenses: "Примитивные защиты", Reality: "Тестирование реальности",
+    NegAff: "Негативная аффективность", Detach: "Отстранённость",
+    Antag: "Антагонизм", Disinh: "Расторможенность", Psycho: "Психотизм",
+    SocDes: "Социальная желательность"
+  };
+
+  const LEVELS_SCALE = [
+    { n: 1, title: "Условно здоровый", range: "1.00 – 1.79", short: "Целостная идентичность, зрелые защиты, реальность сохранна." },
+    { n: 2, title: "Невротический", range: "1.80 – 2.49", short: "Внутренний конфликт, тревога, вина. Реальность и идентичность сохранны." },
+    { n: 3, title: "Верхний пограничный", range: "2.50 – 3.49", short: "Нестабильные отношения, примитивные защиты, диффузия идентичности." },
+    { n: 4, title: "Нижний пограничный", range: "3.50 – 4.49", short: "Выраженная диффузия идентичности, микропсихотические эпизоды под стрессом." },
+    { n: 5, title: "Психотический", range: "4.50 – 5.00 (или реальность ≥ 3.0)", short: "Нарушено тестирование реальности, возможны бред и галлюцинации." }
+  ];
+
+  function shuffleWithSeed(arr, seed) {
+    const a = [...arr]; let s = seed;
+    const rnd = () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
+    for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; }
+    return a;
+  }
+
+  const TOTAL = questions.length;
+  const displayOrder = shuffleWithSeed(questions.map((_, i) => i), 42);
+  let answers = new Array(TOTAL).fill(null);
+  let idx = 0;
+  let results = null;
+  let clientName = "";
+  let emailSent = false;
+  let activeTab = "client";
+  let activeChart = null;
+
+  const content = document.getElementById('content');
+
+  // ============ УТИЛИТЫ ============
+  function localDateStamp() {
+    const d = new Date();
+    const pad = n => String(n).padStart(2, '0');
+    return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+  }
+
+  // ============ СКОРИНГ ============
+  function effectiveValue(qIdx) {
+    const raw = answers[qIdx];
+    if (raw === null) return null;
+    return questions[qIdx].inv ? (6 - raw) : raw;
+  }
+  function meanOf(sub) {
+    const vals = [];
+    questions.forEach((q, i) => {
+      if (q.s !== sub) return;
+      const v = effectiveValue(i);
+      if (v !== null) vals.push(v);
+    });
+    if (!vals.length) return 0;
+    return vals.reduce((a, b) => a + b, 0) / vals.length;
+  }
+  function computeScores() {
+    const sc = {
+      self: meanOf("Self"), inter: meanOf("Inter"),
+      identity: meanOf("Identity"), defenses: meanOf("Defenses"), reality: meanOf("Reality"),
+      negAff: meanOf("NegAff"), detach: meanOf("Detach"),
+      antag: meanOf("Antag"), disinh: meanOf("Disinh"), psycho: meanOf("Psycho"),
+      socDes: meanOf("SocDes")
+    };
+    sc.lpfs = (sc.self + sc.inter) / 2;
+    sc.structural = (sc.identity + sc.defenses + sc.reality) / 3;
+    return sc;
+  }
+
+  function determineLevel(s) {
+    const t = THRESHOLDS;
+    if (s.reality >= t.reality.psycho) return 5;
+    if (s.identity >= t.structural.l4 || s.defenses >= t.structural.l4 ||
+        s.lpfs >= t.structural.l4 || s.structural >= t.structural.l4) return 4;
+    if (s.identity >= t.structural.l3 || s.defenses >= t.structural.l3 ||
+        s.lpfs >= t.structural.l3 || s.structural >= t.structural.l3) return 3;
+    if (s.lpfs >= t.structural.l2 || s.structural >= t.structural.l2 ||
+        s.negAff >= t.trait.low || s.detach >= t.trait.low ||
+        s.antag >= t.trait.low || s.disinh >= t.trait.low) return 2;
+    return 1;
+  }
+
+  function levelPresence(s) {
+    const t = THRESHOLDS;
+    return {
+      1: true,
+      2: s.lpfs >= t.structural.l2 || s.structural >= t.structural.l2 ||
+         s.negAff >= t.trait.low || s.detach >= t.trait.low ||
+         s.antag >= t.trait.low || s.disinh >= t.trait.low,
+      3: s.identity >= t.structural.l3 || s.defenses >= t.structural.l3 ||
+         s.lpfs >= t.structural.l3 || s.structural >= t.structural.l3,
+      4: s.identity >= t.structural.l4 || s.defenses >= t.structural.l4 ||
+         s.lpfs >= t.structural.l4 || s.structural >= t.structural.l4,
+      5: s.reality >= t.reality.partial || s.psycho >= t.trait.med
+    };
+  }
+
+  function levelInfo(lvl) {
+    switch (lvl) {
+      case 1: return { title: "1. Условно здоровый уровень", text: "Структура личности выглядит достаточно интегрированной.", rec: "Рекомендуется поддерживающая терапия, личностный рост." };
+      case 2: return { title: "2. Невротический уровень", text: "Внутренний конфликт, тревога, чувство вины. Идентичность в целом сохранна.", rec: "Хорошо поддаётся психодинамической, гештальт-, схема-терапии." };
+      case 3: return { title: "3. Верхний пограничный уровень", text: "Отношения нестабильны, выражены примитивные защиты, идентичность диффузна.", rec: "Показана длительная терапия: DBT, схема-терапия, трансференс-ориентированная." };
+      case 4: return { title: "4. Нижний пограничный уровень", text: "Выраженная диффузия идентичности, микропсихотические эпизоды под стрессом.", rec: "Комбинированное лечение: психиатр + психотерапевт." };
+      case 5: return { title: "5. Психотический уровень", text: "Нарушено тестирование реальности, возможны бредовые идеи.", rec: "Срочная консультация психиатра." };
+    }
+  }
+
+  // ============ ВАЛИДНОСТЬ ============
+  function carelessnessIndex() {
+    const vals = answers.filter(a => a !== null);
+    if (vals.length < 2) return 0;
+    const mean = vals.reduce((a, b) => a + b, 0) / vals.length;
+    const variance = vals.reduce((a, b) => a + (b - mean) ** 2, 0) / vals.length;
+    return Math.sqrt(variance);
+  }
+
+  // ============ ИНТЕРПРЕТАЦИЯ ============
+  function interpret(value, kind) {
+    const t = THRESHOLDS;
+    const tag = t.status === "calibrated" ? "✓ калиброванный" : "⚠ эмпирический";
+    const n = t.n ? ` (N=${t.n})` : "";
+
+    switch (kind) {
+      case "socDes":
+        if (value >= t.socDes.bad) return { level: "bad", threshold: t.socDes.bad, thresholdStatus: tag + n, interpretation: `Очень высокая — данные могут быть смещены в сторону «нормы».` };
+        if (value >= t.socDes.warn) return { level: "warn", threshold: t.socDes.warn, thresholdStatus: tag + n, interpretation: `Повышенная — возможно сокрытие симптоматики.` };
+        return { level: "ok", threshold: t.socDes.warn, thresholdStatus: tag + n, interpretation: `В пределах нормы — отвечал(а) откровенно.` };
+
+      case "structural":
+        if (value >= t.structural.l4) return { level: "l4", threshold: t.structural.l4, thresholdStatus: tag + n, interpretation: `Соответствует нижнему пограничному уровню.` };
+        if (value >= t.structural.l3) return { level: "l3", threshold: t.structural.l3, thresholdStatus: tag + n, interpretation: `Соответствует верхнему пограничному уровню.` };
+        if (value >= t.structural.l2) return { level: "l2", threshold: t.structural.l2, thresholdStatus: tag + n, interpretation: `Соответствует невротическому уровню.` };
+        return { level: "l1", threshold: t.structural.l2, thresholdStatus: tag + n, interpretation: `Соответствует условно здоровому уровню.` };
+
+      case "subscale":
+        if (value >= t.subscale.high) return { level: "l4", threshold: t.subscale.high, thresholdStatus: tag + n, interpretation: `Выраженность шкалы — очень высокая.` };
+        if (value >= t.subscale.med) return { level: "l3", threshold: t.subscale.med, thresholdStatus: tag + n, interpretation: `Выраженность шкалы — умеренная.` };
+        if (value >= t.subscale.low) return { level: "l2", threshold: t.subscale.low, thresholdStatus: tag + n, interpretation: `Выраженность шкалы — в пределах нижней нормы.` };
+        return { level: "ok", threshold: t.subscale.low, thresholdStatus: tag + n, interpretation: `Выраженность шкалы — низкая.` };
+
+      case "reality":
+        if (value >= t.reality.psycho) return { level: "psycho", threshold: t.reality.psycho, thresholdStatus: tag + n, interpretation: `Выраженное нарушение тестирования реальности.` };
+        if (value >= t.reality.partial) return { level: "partial", threshold: t.reality.partial, thresholdStatus: tag + n, interpretation: `Отдельные сомнения в реальности происходящего.` };
+        return { level: "ok", threshold: t.reality.psycho, thresholdStatus: tag + n, interpretation: `Тестирование реальности сохранно.` };
+
+      case "trait":
+        if (value >= t.trait.high) return { level: "bad", threshold: t.trait.high, thresholdStatus: tag + n, interpretation: `Крайне выраженная черта.` };
+        if (value >= t.trait.med) return { level: "warn", threshold: t.trait.med, thresholdStatus: tag + n, interpretation: `Выраженная черта.` };
+        if (value >= t.trait.low) return { level: "warn", threshold: t.trait.low, thresholdStatus: tag + n, interpretation: `Умеренно выраженная черта.` };
+        return { level: "ok", threshold: t.trait.low, thresholdStatus: tag + n, interpretation: `В пределах нормы.` };
+
+      default: return { level: "info", threshold: 0, thresholdStatus: tag, interpretation: "Нет интерпретации." };
+    }
+  }
+
+  function renderScoreCard(label, value, kind, barClass = "bar-struct") {
+    const info = interpret(value, kind);
+    const pct = Math.round((value / 5) * 100);
+    const num = value.toFixed(2);
+
+    if (DISPLAY_MODE === "raw") {
+      return `<div class="score-row"><span class="score-label">${label}</span><div class="score-bar-bg"><div class="score-bar ${barClass}" style="width:${pct}%"></div></div><span class="score-val">${num}</span></div>`;
+    }
+    if (DISPLAY_MODE === "interpreted") {
+      return `<div class="interp-only"><strong>${label}</strong><div class="interpret-line level-${info.level}"><span class="interp-tag">${info.thresholdStatus}</span>${info.interpretation}</div></div>`;
+    }
+    return `<div class="score-row"><span class="score-label">${label}</span><div class="score-bar-bg"><div class="score-bar ${barClass}" style="width:${pct}%"></div></div><span class="score-val">${num}</span></div>
+      <div class="interpret-line level-${info.level}"><span class="interp-tag">${info.thresholdStatus}</span>${info.interpretation}</div>`;
+  }
+
+  // ============ КАЛИБРОВКА ============
+  function countSamples() {
+    try { return JSON.parse(localStorage.getItem('screening_samples') || '[]').length; }
+    catch { return 0; }
+  }
+
+  function collectSample(s) {
+    try {
+      const samples = JSON.parse(localStorage.getItem('screening_samples') || '[]');
+      samples.push({
+        date: new Date().toISOString(),
+        socDes: s.socDes, structural: s.structural,
+        identity: s.identity, defenses: s.defenses, reality: s.reality,
+        negAff: s.negAff, detach: s.detach, antag: s.antag,
+        disinh: s.disinh, psycho: s.psycho, lpfs: s.lpfs,
+        variability: carelessnessIndex()
+      });
+      localStorage.setItem('screening_samples', JSON.stringify(samples));
+    } catch (e) {}
+  }
+
+  function percentile(arr, p) {
+    if (!arr.length) return 0;
+    const sorted = [...arr].sort((a, b) => a - b);
+    const idx = Math.floor((p / 100) * (sorted.length - 1));
+    return sorted[idx];
+  }
+
+  function calibrateThresholds() {
+    const samples = JSON.parse(localStorage.getItem('screening_samples') || '[]');
+    if (samples.length < 30) { alert(`Недостаточно данных: ${samples.length} / 30.`); return false; }
+    const socDesArr = samples.map(x => x.socDes);
+    const structuralArr = samples.map(x => x.structural);
+    const variabilityArr = samples.map(x => x.variability);
+    const traitKeys = ['negAff','detach','antag','disinh','psycho'];
+    const traitArr = samples.flatMap(x => traitKeys.map(k => x[k]));
+
+    const calibrated = {
+      structural: {
+        l2: +percentile(structuralArr, 25).toFixed(2),
+        l3: +percentile(structuralArr, 50).toFixed(2),
+        l4: +percentile(structuralArr, 75).toFixed(2),
+        l5: +percentile(structuralArr, 90).toFixed(2)
+      },
+      subscale: { ...THRESHOLDS.subscale },
+      reality: { ...THRESHOLDS.reality },
+      trait: {
+        low: +percentile(traitArr, 50).toFixed(2),
+        med: +percentile(traitArr, 75).toFixed(2),
+        high: +percentile(traitArr, 90).toFixed(2)
+      },
+      socDes: {
+        warn: +percentile(socDesArr, 75).toFixed(2),
+        bad:  +percentile(socDesArr, 90).toFixed(2)
+      },
+      variab: {
+        low:    +percentile(variabilityArr, 25).toFixed(2),
+        medium: +percentile(variabilityArr, 50).toFixed(2)
+      },
+      status: "calibrated",
+      n: samples.length,
+      calibratedAt: new Date().toISOString(),
+      _empirical: EMPIRICAL_THRESHOLDS
+    };
+    THRESHOLDS = calibrated;
+    localStorage.setItem('screening_thresholds', JSON.stringify(calibrated));
+    return true;
+  }
+
+  function resetThresholds() {
+    THRESHOLDS = { ...JSON.parse(JSON.stringify(DEFAULT_THRESHOLDS)), _empirical: EMPIRICAL_THRESHOLDS };
+    localStorage.removeItem('screening_thresholds');
+  }
+
+  // ============ ОТЧЁТ О ВАЛИДНОСТИ ============
+  function validityReport(s) {
+    const sd = s.socDes;
+    const ci = carelessnessIndex();
+    const out = [];
+    const socInterp = interpret(sd, "socDes");
+    out.push({ level: socInterp.level === "bad" ? "bad" : socInterp.level === "warn" ? "warn" : "ok",
+      text: `Социальная желательность: ${sd.toFixed(2)}/5. [${socInterp.thresholdStatus}, порог ${socInterp.threshold.toFixed(2)}] ${socInterp.interpretation}` });
+    if (ci < THRESHOLDS.variab.low) out.push({ level: "bad", text: `Вариативность ответов: ${ci.toFixed(2)} — очень низкая. Возможно «одним паттерном».` });
+    else if (ci < THRESHOLDS.variab.medium) out.push({ level: "warn", text: `Вариативность ответов: ${ci.toFixed(2)} — пониженная.` });
+    else out.push({ level: "ok", text: `Вариативность ответов: ${ci.toFixed(2)} — достаточная.` });
+    return out;
+  }
+
+  // ============ ГЕНЕРАЦИЯ ТЕКСТОВ ============
+  function generateClientNarrative(s, level) {
+    if (level >= 4) return "Ваш профиль указывает на выраженные трудности в нескольких сферах. Это не «приговор», а ориентир для работы со специалистом.";
+    if (level === 3) return "У вас есть отдельные трудности с ощущением себя и стабильностью отношений. Многие люди с такими чертами успешно работают над ними в терапии.";
+    if (level === 2) return "Ваш профиль характерен для внутреннего конфликта и повышенной тревожности.";
+    return "Ваш профиль указывает на достаточно устойчивую структуру личности.";
+  }
+  function generateStrengths(s) {
+    const st = [];
+    if (s.identity <= 2.0) st.push("Устойчивое и целостное чувство себя.");
+    if (s.defenses <= 2.0) st.push("Преобладание зрелых защитных механизмов.");
+    if (s.reality <= 1.5) st.push("Устойчивый контакт с реальностью.");
+    if (s.self <= 2.0) st.push("Ясное самовосприятие.");
+    if (s.inter <= 2.0) st.push("Способность строить близкие и стабильные отношения.");
+    if (s.negAff <= 2.5) st.push("Эмоциональная устойчивость.");
+    if (s.detach <= 2.5) st.push("Открытость к контакту.");
+    if (s.antag <= 2.5) st.push("Уважение к другим, способность к сотрудничеству.");
+    if (s.disinh <= 2.5) st.push("Самоконтроль и способность планировать.");
+    if (s.psycho <= 2.0) st.push("Устойчивое восприятие.");
+    if (!st.length) st.push("Готовность к самоисследованию — это уже ресурс.");
+    return st;
+  }
+  function generateAttentionPoints(s) {
+    const p = [];
+    if (s.identity >= 3.0) p.push("Образ «Я» нестабилен, может резко меняться.");
+    if (s.defenses >= 3.0) p.push("Склонность к обесцениванию, идеализации, отрицанию.");
+    if (s.reality >= 2.5) p.push("Эпизоды сомнений в реальности происходящего.");
+    if (s.negAff >= 3.5) p.push("Высокий уровень тревоги, эмоциональной нестабильности.");
+    if (s.detach >= 3.5) p.push("Трудности с близостью и доверием.");
+    if (s.antag >= 3.5) p.push("Трудности с доверием, конфронтация.");
+    if (s.disinh >= 3.5) p.push("Импульсивность, трудности с самоконтролем.");
+    if (s.psycho >= 3.0) p.push("Необычные переживания.");
+    if (!p.length) p.push("Выраженных проблемных зон не выявлено.");
+    return p;
+  }
+  function generateRiskFlags(s) {
+    const flags = [];
+    if (s.psycho >= 4.0 || s.reality >= 3.5) flags.push({ level: "high", text: "Выраженные психотические маркеры. Требуется консультация психиатра." });
+    else if (s.reality >= THRESHOLDS.reality.psycho) flags.push({ level: "medium", text: "Нарушения тестирования реальности — требуется клиническая верификация." });
+    if (s.disinh >= 4.0) flags.push({ level: "medium", text: "Высокая импульсивность — риск импульсивных действий." });
+    if (s.negAff >= 4.0) flags.push({ level: "medium", text: "Крайне высокий уровень негативной аффективности. Оценить суицидальный риск." });
+    if (s.psycho >= 3.0 && s.psycho < 4.0 && s.reality < THRESHOLDS.reality.psycho) flags.push({ level: "medium", text: "Отдельные психотические черты — уточнить при клинической беседе." });
+    return flags;
+  }
+  function generateDefenseProfile(s) {
+    const d = [];
+    if (s.defenses >= 3.5) { d.push("Расщепление"); d.push("Проективная идентификация"); d.push("Отрицание"); }
+    else if (s.defenses >= 2.5) { d.push("Проекция"); d.push("Примитивная идеализация / обесценивание"); }
+    if (s.identity >= 3.0) d.push("Диффузия идентичности");
+    if (s.negAff >= 3.5 && s.defenses < 3.0) d.push("Вытеснение, рационализация, изоляция аффекта");
+    if (s.psycho >= 3.0) d.push("Психотические защиты");
+    if (!d.length) d.push("Преимущественно зрелые защиты.");
+    return d;
+  }
+  function generateDifferential(s, level) {
+    const h = [];
+    if (s.psycho >= 3.5 || s.reality >= THRESHOLDS.reality.psycho) h.push("Психотический спектр.");
+    if (s.identity >= 3.0 && s.defenses >= 3.0) h.push("Пограничное расстройство личности.");
+    if (s.identity >= 2.5 && s.negAff >= 3.0 && s.detach < 3.0 && s.antag >= 2.5) h.push("Нарциссическая организация.");
+    if (s.detach >= 3.5 && s.negAff < 3.5) h.push("Шизоидная / шизотипическая структура.");
+    if (s.antag >= 3.5 && s.disinh >= 3.0) h.push("Антисоциальные черты.");
+    if (s.negAff >= 3.5 && s.identity < 3.0 && s.detach < 3.0) h.push("Тревожное / избегающее расстройство.");
+    if (!h.length) h.push("Требуется дополнительная клиническая оценка.");
+    return h;
+  }
+  function generateFurtherAssessment(s, level) {
+    const f = [];
+    if (level >= 4 || s.psycho >= 3.0 || s.reality >= THRESHOLDS.reality.psycho) { f.push("Консультация психиатра."); f.push("Оценка суицидального риска."); }
+    if (level >= 3) { f.push("STIPO-R (интервью)."); f.push("IPO-R (самоопросник)."); }
+    if (level >= 2) { f.push("LPFS-BF 2.0."); f.push("PID-5-BF."); }
+    if (s.negAff >= 3.5) f.push("Шкалы тревоги и депрессии (HADS, BDI-II).");
+    if (s.detach >= 3.5 || s.inter >= 3.5) f.push("SCORS-G, TAT.");
+    if (level === 1) f.push("Дополнительная диагностика не требуется.");
+    return f;
+  }
+  function generateCrisisResources() {
+    return ["Телефон доверия (круглосуточно, бесплатно): 8-800-2000-122", "Экстренная психологическая помощь МЧС: +7 (495) 989-50-50", "Острый кризис — 103 или 112."];
+  }
+
+  // ============ РАДАР ============
+  const CLINICAL_AXES = [
+    { key: "identity", label: "Идентичность" }, { key: "defenses", label: "Примитивные защиты" },
+    { key: "reality", label: "Тестирование реальности" }, { key: "self", label: "Самость" },
+    { key: "inter", label: "Межличностное" }, { key: "negAff", label: "Негативная аффективность" },
+    { key: "detach", label: "Отстранённость" }, { key: "antag", label: "Антагонизм" },
+    { key: "disinh", label: "Расторможенность" }, { key: "psycho", label: "Психотизм" }
+  ];
+  const CLIENT_AXES = [
+    { key: "identity", label: "Ясность себя" }, { key: "defenses", label: "Способность справляться" },
+    { key: "reality", label: "Контакт с реальностью" }, { key: "self", label: "Понимание себя" },
+    { key: "inter", label: "Отношения" }, { key: "negAff", label: "Эмоциональная устойчивость" },
+    { key: "detach", label: "Открытость" }, { key: "antag", label: "Доверие" },
+    { key: "disinh", label: "Самоконтроль" }, { key: "psycho", label: "Устойчивость восприятия" }
+  ];
+
+  function buildRadarChart(canvas, role, s) {
+    const axes = role === "client" ? CLIENT_AXES : CLINICAL_AXES;
+    const values = axes.map(a => role === "client" ? (5 - s[a.key]) : s[a.key]);
+    const color = role === "client"
+      ? { line: "rgba(127, 168, 127, 1)", bg: "rgba(127, 168, 127, 0.2)", point: "rgba(127, 168, 127, 1)" }
+      : { line: "rgba(139, 122, 101, 1)", bg: "rgba(139, 122, 101, 0.2)", point: "rgba(163, 92, 74, 1)" };
+
+    return new Chart(canvas, {
+      type: "radar",
+      data: { labels: axes.map(a => a.label), datasets: [{ label: role === "client" ? "Ваши ресурсы" : "Выраженность", data: values, backgroundColor: color.bg, borderColor: color.line, borderWidth: 2, pointBackgroundColor: color.point, pointRadius: 4 }] },
+      options: {
+        responsive: true, maintainAspectRatio: false, animation: false,
+        scales: { r: { min: 0, max: 5, ticks: { stepSize: 1, color: "#b09a7c", font: { size: 10 } }, grid: { color: "#eae2d7" }, angleLines: { color: "#eae2d7" }, pointLabels: { color: "#4a3e35", font: { size: 11, weight: "500" } } } },
+        plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => role === "client" ? `Ресурс: ${ctx.raw.toFixed(2)} / 5` : `Выраженность: ${ctx.raw.toFixed(2)} / 5` } } }
+      }
+    });
+  }
+
+  // ============ CSV ============
+  function exportCSV() {
+    if (!results) return;
+    const s = results.scores;
+    const presence = levelPresence(s);
+    const validity = validityReport(s);
+    const dateStr = new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-');
+    const name = (clientName || "client").replace(/[^a-zA-Zа-яА-Я0-9_-]/g, "_");
+
+    const rows = [
+      ["Параметр", "Значение", "Максимум"],
+      ["Клиент", clientName || "не указан", ""],
+      ["Дата", new Date().toLocaleString("ru-RU"), ""],
+      ["Режим отображения", DISPLAY_MODE, ""],
+      ["Статус порогов", THRESHOLDS.status === "calibrated" ? `калиброванные (N=${THRESHOLDS.n})` : "эмпирические", ""],
+      ["Эмпирические пороги структурных", `l2=${EMPIRICAL_THRESHOLDS.structural.l2}, l3=${EMPIRICAL_THRESHOLDS.structural.l3}, l4=${EMPIRICAL_THRESHOLDS.structural.l4}, l5=${EMPIRICAL_THRESHOLDS.structural.l5}`, ""],
+      ["Использованные пороги структурных", `l2=${THRESHOLDS.structural.l2}, l3=${THRESHOLDS.structural.l3}, l4=${THRESHOLDS.structural.l4}, l5=${THRESHOLDS.structural.l5}`, ""],
+      ["Эмпирические пороги соц. желательности", `warn=${EMPIRICAL_THRESHOLDS.socDes.warn}, bad=${EMPIRICAL_THRESHOLDS.socDes.bad}`, ""],
+      ["Использованные пороги соц. желательности", `warn=${THRESHOLDS.socDes.warn}, bad=${THRESHOLDS.socDes.bad}`, ""],
+      [""],
+      ["--- Структурный профиль ---", "", ""],
+      ["Идентичность (сырой)", s.identity.toFixed(2), "5.00"],
+      ["Примитивные защиты (сырой)", s.defenses.toFixed(2), "5.00"],
+      ["Тестирование реальности (сырой)", s.reality.toFixed(2), "5.00"],
+      ["Интегральный структурный балл", s.structural.toFixed(2), "5.00"],
+      [""],
+      ["--- Функционирование (LPFS) ---", "", ""],
+      ["Самость", s.self.toFixed(2), "5.00"],
+      ["Межличностное", s.inter.toFixed(2), "5.00"],
+      ["Общий LPFS", s.lpfs.toFixed(2), "5.00"],
+      [""],
+      ["--- Патологические черты (PID-5) ---", "", ""],
+      ["Негативная аффективность", s.negAff.toFixed(2), "5.00"],
+      ["Отстранённость", s.detach.toFixed(2), "5.00"],
+      ["Антагонизм", s.antag.toFixed(2), "5.00"],
+      ["Расторможенность", s.disinh.toFixed(2), "5.00"],
+      ["Психотизм", s.psycho.toFixed(2), "5.00"],
+      [""],
+      ["--- Валидность ---", "", ""],
+      ["Социальная желательность (сырой)", s.socDes.toFixed(2), "5.00"],
+      ["Вариативность ответов (SD)", carelessnessIndex().toFixed(2), ""],
+      ...validity.map(v => [v.level.toUpperCase(), v.text, ""]),
+      [""],
+      ["--- Итог ---", "", ""],
+      ["Основной уровень", results.info.title, ""],
+      ["Уровень 1 присутствует", presence[1] ? "да" : "нет", ""],
+      ["Уровень 2 присутствует", presence[2] ? "да" : "нет", ""],
+      ["Уровень 3 присутствует", presence[3] ? "да" : "нет", ""],
+      ["Уровень 4 присутствует", presence[4] ? "да" : "нет", ""],
+      ["Уровень 5 присутствует", presence[5] ? "да" : "нет", ""],
+      [""],
+      ["--- Красные флаги ---", "", ""],
+      ...generateRiskFlags(s).map(f => [f.level === "high" ? "ВЫСОКИЙ" : "СРЕДНИЙ", f.text, ""]),
+      [""],
+      ["--- Дифференциальные гипотезы ---", "", ""],
+      ...generateDifferential(s, results.level).map(h => [h, "", ""]),
+      [""],
+      ["--- Сырые ответы ---", "", ""]
     ];
 
-    // Состояние
-    const totalQuestions = questions.length;
-    let answers = new Array(totalQuestions).fill(null); // null / true / false
-    let currentIndex = 0;
-    let testCompleted = false;
-    let resultData = null;
+    displayOrder.forEach((qIdx, pos) => {
+      const q = questions[qIdx];
+      const val = answers[qIdx] !== null ? answers[qIdx] : "";
+      const invMark = q.inv ? " [инверт.]" : "";
+      rows.push([`#${pos+1} (Q${qIdx+1}) [${subTitles[q.s]}]${invMark}`, val, "5"]);
+    });
 
-    // DOM элемент для рендера
-    const dynamicContent = document.getElementById('dynamic-content');
+    const csvContent = rows.map(row =>
+      row.map(cell => {
+        const str = String(cell ?? "");
+        return str.includes(",") || str.includes('"') || str.includes("\n") ? `"${str.replace(/"/g, '""')}"` : str;
+      }).join(",")
+    ).join("\n");
 
-    // Вспомогательные функции
-    function getAnswerValue(index) {
-      return answers[index] === true ? 1 : 0; // ДА = 1, НЕТ = 0
+    const blob = new Blob(["\uFEFF" + csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `screening_${name}_${dateStr}.csv`;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  // ============ PDF ============
+  function setPdfBusy(busy) {
+    ['pdf-client-btn', 'pdf-therapist-btn', 'csv-btn'].forEach(id => {
+      const b = document.getElementById(id);
+      if (b) { b.disabled = busy; b.style.opacity = busy ? .5 : 1; }
+    });
+    const status = document.getElementById('email-status');
+    if (status && busy) {
+      status.dataset.prevText = status.textContent;
+      status.dataset.prevClass = status.className;
+      status.textContent = "⏳ Готовим PDF, пожалуйста подождите…";
+      status.className = "email-status info";
+    } else if (status && status.dataset.prevText) {
+      status.textContent = status.dataset.prevText;
+      status.className = status.dataset.prevClass;
+      delete status.dataset.prevText;
+      delete status.dataset.prevClass;
     }
+  }
 
-    function calculateScores() {
-      let block1 = 0, block2 = 0, block3 = 0, block4 = 0, block5 = 0;
-      for (let i = 0; i < 10; i++) block1 += getAnswerValue(i);      // 0-9
-      for (let i = 10; i < 20; i++) block2 += getAnswerValue(i);    // 10-19
-      for (let i = 20; i < 30; i++) block3 += getAnswerValue(i);    // 20-29
-      for (let i = 30; i < 40; i++) block4 += getAnswerValue(i);    // 30-39
-      for (let i = 40; i < 50; i++) block5 += getAnswerValue(i);    // 40-49
-      return { block1, block2, block3, block4, block5 };
-    }
+  async function captureElementAsPdf(element, filename) {
+    if (!element) { alert("Нет данных для экспорта."); return; }
+    try {
+      element.scrollIntoView({ behavior: "instant", block: "start" });
+      await new Promise(r => setTimeout(r, 100));
 
-    function determineLevel(scores) {
-      const { block1, block2, block3, block4, block5 } = scores;
-      
-      // Психотический уровень: блок5 >0 или блок1 >= 8
-      if (block5 > 0 || block1 >= 8) {
-        return 5; // Психотический
-      }
-      
-      // Нижний пограничный
-      if (block1 >= 5 || (block2 >= 16 && block3 >= 16) || (block4 >= 20 && block3 >= 16)) {
-        return 4;
-      }
-      
-      // Верхний пограничный
-      if ((block3 >= 11 && block2 >= 12) || (block4 >= 14 && block2 >= 12) || block3 >= 14) {
-        return 3;
-      }
-      
-      // Невротический
-      if ((block2 >= 6 && block2 <= 12) || (block4 >= 7 && block4 <= 15) || block3 >= 5) {
-        return 2;
-      }
-      
-      // Условно здоровый
-      return 1;
-    }
-
-    function getLevelDescription(level, scores) {
-      const defenseMechanisms = [];
-      if (scores.block3 >= 11) defenseMechanisms.push("Расщепление (обесценивание/идеализация)");
-      if (scores.block3 >= 7) defenseMechanisms.push("Проекция");
-      if (scores.block2 >= 12) defenseMechanisms.push("Диффузная идентичность");
-      if (scores.block1 >= 4) defenseMechanisms.push("Искажение реальности");
-      if (scores.block4 >= 14) defenseMechanisms.push("Эмоциональная дисрегуляция");
-      if (scores.block5 > 0) defenseMechanisms.push("Психотические симптомы (галлюцинаторные/бредовые)");
-      if (defenseMechanisms.length === 0) defenseMechanisms.push("Преимущественно зрелые защиты (юмор, сублимация, альтруизм)");
-
-      let levelText = "";
-      let rec = "";
-
-      switch(level) {
-        case 1:
-          levelText = "1. Условно здоровый (Норма)";
-          rec = "Ваша психика организована гибко. Вы сохраняете контакт с реальностью, идентичность целостна, защиты зрелые. Рекомендуется поддерживать ментальную гигиену и личностный рост.";
-          break;
-        case 2:
-          levelText = "2. Невротический уровень";
-          rec = "Присутствует внутренний конфликт, чувство вины, тревога. Тестирование реальности сохранно. Хорошо поддается разговорной психотерапии (психодинамическая, гештальт).";
-          break;
-        case 3:
-          levelText = "3. Верхний пограничный уровень";
-          rec = "Отношения нестабильны, выражены примитивные защиты, но реальность в целом ясна. Рекомендована длительная терапия (DBT, схема-терапия).";
-          break;
-        case 4:
-          levelText = "4. Нижний пограничный уровень";
-          rec = "Выраженная диффузия идентичности, возможны микропсихотические эпизоды, самоповреждения. Требуется комбинированное лечение (психиатр + психолог).";
-          break;
-        case 5:
-          levelText = "5. Психотический уровень";
-          rec = "Нарушено тестирование реальности, присутствуют бредовые идеи или галлюцинации. Необходима срочная консультация психиатра и медикаментозная поддержка.";
-          break;
-        default: levelText = "Не определен";
-      }
-
-      return { levelText, rec, defenseMechanisms };
-    }
-
-    function finishTest() {
-      const scores = calculateScores();
-      const level = determineLevel(scores);
-      const { levelText, rec, defenseMechanisms } = getLevelDescription(level, scores);
-      
-      resultData = {
-        scores,
-        level,
-        levelText,
-        rec,
-        defenseMechanisms
-      };
-      testCompleted = true;
-      render();
-    }
-
-    function autoAdvance() {
-      if (testCompleted) return;
-      
-      // Если это последний вопрос и на него только что ответили
-      if (currentIndex === totalQuestions - 1 && answers[currentIndex] !== null) {
-        // Проверяем, все ли вопросы отвечены
-        if (answers.every(a => a !== null)) {
-          finishTest();
-        }
-        return;
-      }
-      
-      // Переход к следующему вопросу
-      if (currentIndex < totalQuestions - 1 && answers[currentIndex] !== null) {
-        currentIndex++;
-        render();
-      }
-    }
-
-    function goToPrev() {
-      if (currentIndex > 0 && !testCompleted) {
-        currentIndex--;
-        render();
-      }
-    }
-
-    function setAnswer(index, value) {
-      if (testCompleted) return;
-      const newAnswers = [...answers];
-      newAnswers[index] = value;
-      answers = newAnswers;
-      render();
-      
-      // Автоматический переход к следующему вопросу после выбора ответа
-      if (value !== null) {
-        // Небольшая задержка для визуального отклика
-        setTimeout(() => {
-          autoAdvance();
-        }, 300);
-      }
-    }
-
-    function restartTest() {
-      answers = new Array(totalQuestions).fill(null);
-      currentIndex = 0;
-      testCompleted = false;
-      resultData = null;
-      render();
-    }
-
-    // Рендер интерфейса
-    function render() {
-      if (testCompleted && resultData) {
-        renderResults();
-        return;
-      }
-
-      // Основной вид теста
-      const answeredCount = answers.filter(a => a !== null).length;
-      const progressPercent = Math.round((answeredCount / totalQuestions) * 100);
-      const currentQuestion = questions[currentIndex];
-      const currentAnswer = answers[currentIndex];
-      const isLastQuestion = currentIndex === totalQuestions - 1;
-
-      let html = `
-        <div class="progress-section">
-          <span>📋 Вопрос ${currentIndex+1}/${totalQuestions}</span>
-          <div class="progress-bar-bg">
-            <div class="progress-fill" style="width:${progressPercent}%;"></div>
-          </div>
-          <span>${progressPercent}%</span>
-        </div>
-        <div class="question-block">
-          <div class="question-text">${currentQuestion}</div>
-          <div class="binary-options">
-            <label class="${currentAnswer === true ? 'active-label' : ''}">
-              <input type="radio" name="q${currentIndex}" value="yes" ${currentAnswer === true ? 'checked' : ''} >
-              ✅ ДА
-            </label>
-            <label class="${currentAnswer === false ? 'active-label' : ''}">
-              <input type="radio" name="q${currentIndex}" value="no" ${currentAnswer === false ? 'checked' : ''} >
-              ❌ НЕТ
-            </label>
-          </div>
-        </div>
-        <div class="nav-buttons">
-          <button id="prev-btn" ${currentIndex === 0 ? 'disabled' : ''}>← Назад</button>
-          ${!isLastQuestion ? 
-            `<div class="auto-advance-hint">💡 Ответ будет переключён автоматически</div>` : 
-            `<div class="auto-advance-hint">💡 Ответив на этот вопрос, вы завершите тест</div>`
-          }
-        </div>
-        <div class="small-note" style="text-align:center; margin-top:10px;">Выберите ДА или НЕТ — произойдёт автоматический переход к следующему вопросу.</div>
-      `;
-
-      dynamicContent.innerHTML = html;
-
-      // Привязка событий
-      document.querySelectorAll(`input[name="q${currentIndex}"]`).forEach(radio => {
-        radio.addEventListener('change', (e) => {
-          const val = e.target.value === 'yes';
-          setAnswer(currentIndex, val);
-        });
+      const canvas = await html2canvas(element, {
+        scale: 1.5,
+        backgroundColor: '#fdfaf7',
+        useCORS: true,
+        allowTaint: false,
+        logging: false,
+        scrollX: -window.scrollX,
+        scrollY: -window.scrollY,
+        windowWidth: document.documentElement.offsetWidth,
+        windowHeight: element.scrollHeight
       });
 
-      document.getElementById('prev-btn')?.addEventListener('click', goToPrev);
+      const imgData = canvas.toDataURL('image/png');
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      const imgWidth = pdfWidth;
+      const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+      let heightLeft = imgHeight;
+      let position = 0;
+      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight, undefined, 'FAST');
+      heightLeft -= pdfHeight;
+
+      while (heightLeft > 0) {
+        position = heightLeft - imgHeight;
+        pdf.addPage();
+        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight, undefined, 'FAST');
+        heightLeft -= pdfHeight;
+      }
+      pdf.save(filename);
+    } catch (err) {
+      console.error("PDF export error:", err);
+      alert("Не удалось создать PDF: " + err.message + "\nПопробуйте уменьшить зум браузера или обновить страницу.");
     }
+  }
 
-    function renderResults() {
-      const { scores, level, levelText, rec, defenseMechanisms } = resultData;
-      const defenseList = defenseMechanisms.map(d => `<li>🔹 ${d}</li>`).join('');
+  async function exportClientPDF() {
+    if (!results) return;
+    const prevTab = activeTab;
+    if (prevTab !== 'client') {
+      showTab('client');
+      await new Promise(r => setTimeout(r, 500));
+    }
+    setPdfBusy(true);
+    try {
+      const el = document.getElementById('pane-client');
+      const safeName = (clientName || "client").replace(/[^a-zA-Zа-яА-Я0-9_-]/g, "_");
+      await captureElementAsPdf(el, `screening_client_${safeName}_${localDateStamp()}.pdf`);
+    } finally {
+      setPdfBusy(false);
+      if (prevTab !== 'client') showTab(prevTab);
+    }
+  }
 
-      const html = `
-        <div class="results-container">
-          <h2 style="font-weight:400; color:#4a3e35;">📊 Результаты диагностики</h2>
-          <div class="level-title">${levelText}</div>
-          <p style="font-size:1.1rem; margin:12px 0 18px; background:#fff; padding:14px; border-radius:16px;">${rec}</p>
-          
-          <div class="defense-box">
-            <strong>🛡️ Защитные механизмы и особенности:</strong>
-            <ul style="margin-top:10px; padding-left:20px; list-style-type:none;">${defenseList}</ul>
-          </div>
-          
-          <hr>
-          <p><strong>📈 Баллы по блокам:</strong></p>
-          <ul style="list-style:none; padding-left:10px;">
-            <li>🔍 Тестирование реальности (Блок 1): ${scores.block1}/10</li>
-            <li>🪞 Идентичность (Блок 2): ${scores.block2}/10</li>
-            <li>⚔️ Примитивные защиты (Блок 3): ${scores.block3}/10</li>
-            <li>🌊 Эмоциональная регуляция (Блок 4): ${scores.block4}/10</li>
-            <li>⚠️ Психотические маркеры (Блок 5): ${scores.block5}/10</li>
-          </ul>
-          <p class="small-note" style="margin-top:16px;">* Интерпретация основана на структурной диагностике. Не является медицинским заключением.</p>
-          <button id="restart-btn" style="margin-top:24px; width:100%;" class="primary-btn">🔄 Пройти тест заново</button>
+  async function exportTherapistPDF() {
+    if (!results) return;
+    const prevTab = activeTab;
+    if (prevTab !== 'therapist') {
+      showTab('therapist');
+      await new Promise(r => setTimeout(r, 500));
+    }
+    setPdfBusy(true);
+    try {
+      const el = document.getElementById('pane-therapist');
+      const safeName = (clientName || "client").replace(/[^a-zA-Zа-яА-Я0-9_-]/g, "_");
+      await captureElementAsPdf(el, `screening_therapist_${safeName}_${localDateStamp()}.pdf`);
+    } finally {
+      setPdfBusy(false);
+      if (prevTab !== 'therapist') showTab(prevTab);
+    }
+  }
+
+  // ============ EMAIL ============
+  async function sendEmail() {
+    if (!results) return false;
+    const statusEl = document.getElementById('email-status');
+    if (statusEl) { statusEl.textContent = "⏳ Отправка результатов..."; statusEl.className = "email-status info"; }
+
+    const s = results.scores;
+    const presence = levelPresence(s);
+    const validity = validityReport(s);
+    const flags = generateRiskFlags(s);
+    const defenses = generateDefenseProfile(s);
+    const diff = generateDifferential(s, results.level);
+    const further = generateFurtherAssessment(s, results.level);
+    const strengths = generateStrengths(s);
+    const attention = generateAttentionPoints(s);
+    const narrative = generateClientNarrative(s, results.level);
+
+    const presentList = LEVELS_SCALE.filter(l => presence[l.n]).map(l => `${l.n}. ${l.title}`).join("; ");
+
+    const rawAnswers = displayOrder.map((qIdx, pos) => {
+      const q = questions[qIdx];
+      const v = answers[qIdx];
+      const invMark = q.inv ? " [ИНВ]" : "";
+      return `#${pos+1}. Q${qIdx+1} [${subTitles[q.s]}]${invMark}: ${v ?? "—"} — ${q.t}`;
+    }).join("\n");
+
+    const payload = {
+      _subject: `Скрининг — ${clientName || "без имени"} — ${results.info.title}`,
+      client: clientName || "не указан",
+      date: new Date().toLocaleString("ru-RU"),
+      display_mode: DISPLAY_MODE,
+      thresholds_status: THRESHOLDS.status === "calibrated" ? `калиброванные (N=${THRESHOLDS.n}, ${new Date(THRESHOLDS.calibratedAt).toLocaleDateString('ru-RU')})` : "эмпирические",
+      thresholds_empirical: `structural: l2=${EMPIRICAL_THRESHOLDS.structural.l2}, l3=${EMPIRICAL_THRESHOLDS.structural.l3}, l4=${EMPIRICAL_THRESHOLDS.structural.l4}, l5=${EMPIRICAL_THRESHOLDS.structural.l5} | socDes: warn=${EMPIRICAL_THRESHOLDS.socDes.warn}, bad=${EMPIRICAL_THRESHOLDS.socDes.bad} | trait: low=${EMPIRICAL_THRESHOLDS.trait.low}, med=${EMPIRICAL_THRESHOLDS.trait.med}, high=${EMPIRICAL_THRESHOLDS.trait.high}`,
+      thresholds_used: `structural: l2=${THRESHOLDS.structural.l2}, l3=${THRESHOLDS.structural.l3}, l4=${THRESHOLDS.structural.l4}, l5=${THRESHOLDS.structural.l5} | socDes: warn=${THRESHOLDS.socDes.warn}, bad=${THRESHOLDS.socDes.bad} | trait: low=${THRESHOLDS.trait.low}, med=${THRESHOLDS.trait.med}, high=${THRESHOLDS.trait.high}`,
+      level_main: results.info.title,
+      levels_present: presentList,
+      structural_total: s.structural.toFixed(2),
+      identity: s.identity.toFixed(2),
+      defenses_score: s.defenses.toFixed(2),
+      reality: s.reality.toFixed(2),
+      self: s.self.toFixed(2),
+      inter: s.inter.toFixed(2),
+      lpfs: s.lpfs.toFixed(2),
+      negAff: s.negAff.toFixed(2),
+      detach: s.detach.toFixed(2),
+      antag: s.antag.toFixed(2),
+      disinh: s.disinh.toFixed(2),
+      psycho: s.psycho.toFixed(2),
+      social_desirability: s.socDes.toFixed(2),
+      carelessness_sd: carelessnessIndex().toFixed(2),
+      validity_report: validity.map(v => `[${v.level.toUpperCase()}] ${v.text}`).join("\n\n"),
+      risk_flags: flags.length ? flags.map(f => `[${f.level.toUpperCase()}] ${f.text}`).join("\n") : "не выявлено",
+      defenses_profile: defenses.join("\n"),
+      differential: diff.join("\n"),
+      further_assessment: further.join("\n"),
+      treatment_recommendation: results.info.rec,
+      level_description: results.info.text,
+      client_narrative: narrative,
+      client_strengths: strengths.join("\n"),
+      client_attention: attention.join("\n"),
+      crisis_resources: generateCrisisResources().join("\n"),
+      raw_answers: rawAnswers
+    };
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Accept": "application/json", "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const data = await response.json().catch(() => ({}));
+      if (response.ok) {
+        emailSent = true;
+        if (statusEl) { statusEl.textContent = `✅ Результаты отправлены на ${RECIPIENT_EMAIL}`; statusEl.className = "email-status ok"; }
+        return true;
+      } else {
+        let errMsg = data.error || response.statusText || `HTTP ${response.status}`;
+        if (data.errors && Array.isArray(data.errors)) errMsg += ": " + data.errors.map(e => e.message || JSON.stringify(e)).join("; ");
+        if (statusEl) { statusEl.textContent = `⚠️ Автоотправка не удалась (${errMsg}).`; statusEl.className = "email-status err"; }
+        return false;
+      }
+    } catch (err) {
+      if (statusEl) { statusEl.textContent = `⚠️ Автоотправка не удалась: ${err.message}.`; statusEl.className = "email-status err"; }
+      return false;
+    }
+  }
+
+  // ============ РЕНДЕР ============
+  function renderIntro() {
+    const samplesCount = countSamples();
+    content.innerHTML = `
+      <div class="intro-box">
+        <p><strong>О тесте.</strong> Исследовательский скрининг-инструмент на основе <strong>LPFS-BF 2.0</strong>, <strong>IPO-R / STIPO-R</strong>, <strong>PID-5-BF</strong>. Включена <strong>шкала социальной желательности (Marlowe-Crowne)</strong> и <strong>инвертированные пункты</strong>.</p>
+        <p style="margin-top:10px;">69 пунктов, шкала 1–5, около 12–15 минут.</p>
+        <p style="margin-top:10px; font-size:.88rem; color:#6b6258;">Статус порогов: <strong>${THRESHOLDS.status === "calibrated" ? "калиброванные (N=" + THRESHOLDS.n + ")" : "эмпирические"}</strong>. Накоплено данных: ${samplesCount} / 30.</p>
+      </div>
+      <div style="margin-bottom:18px;">
+        <label style="font-size:.9rem; color:#6b6258; display:block; margin-bottom:6px;">Имя или ID клиента:</label>
+        <input id="client-name-input" type="text" placeholder="Например: Иванов И.И. или case_042" style="width:100%; padding:10px 14px; border:1.5px solid #d6ccbf; border-radius:12px; font-size:.95rem; font-family:inherit; background:#fff;">
+      </div>
+      <div class="nav-buttons"><span></span><button class="primary-btn" id="start-btn">Начать →</button></div>
+      <div class="disclaimer">⚠️ Инструмент не заменяет клиническое интервью, STIPO-R и валидированные методики.</div>`;
+    document.getElementById('start-btn').onclick = () => {
+      clientName = document.getElementById('client-name-input').value.trim();
+      idx = 0; renderQuestion();
+    };
+  }
+
+  function renderQuestion() {
+    const qIdx = displayOrder[idx];
+    const q = questions[qIdx];
+    const ans = answers[qIdx];
+    const answered = answers.filter(a => a !== null).length;
+    const pct = Math.round((answered / TOTAL) * 100);
+    content.innerHTML = `
+      <div class="progress-section">
+        <span>Вопрос ${idx + 1} / ${TOTAL}</span>
+        <div class="progress-bar-bg"><div class="progress-fill" style="width:${pct}%"></div></div>
+        <span>${pct}%</span>
+      </div>
+      <div class="question-text">${q.t}</div>
+      <div class="likert">
+        ${[1,2,3,4,5].map(v => `<label><input type="radio" name="q" value="${v}" ${ans === v ? 'checked' : ''}><span class="likert-num">${v}</span><span>${v === 1 ? "совсем не про меня" : v === 2 ? "скорее не про меня" : v === 3 ? "что-то среднее" : v === 4 ? "скорее про меня" : "очень про меня"}</span></label>`).join('')}
+      </div>
+      <div class="nav-buttons">
+        <button id="prev-btn" ${idx === 0 ? 'disabled' : ''}>← Назад</button>
+        <button id="next-btn" class="primary-btn" ${ans === null ? 'disabled' : ''}>${idx === TOTAL - 1 ? 'Завершить' : 'Далее →'}</button>
+      </div>`;
+    document.querySelectorAll('input[name="q"]').forEach(r => {
+      r.addEventListener('change', e => {
+        answers[qIdx] = parseInt(e.target.value, 10);
+        document.getElementById('next-btn').disabled = false;
+        setTimeout(() => {
+          if (answers[qIdx] !== null) {
+            if (idx < TOTAL - 1) { idx++; renderQuestion(); }
+            else finish();
+          }
+        }, 300);
+      });
+    });
+    const prev = document.getElementById('prev-btn');
+    if (prev) prev.onclick = () => { if (idx > 0) { idx--; renderQuestion(); } };
+    const next = document.getElementById('next-btn');
+    next.onclick = () => {
+      if (answers[qIdx] === null) return;
+      if (idx < TOTAL - 1) { idx++; renderQuestion(); }
+      else finish();
+    };
+  }
+
+  function finish() {
+    if (answers.some(a => a === null)) {
+      const firstMissingDisplay = displayOrder.findIndex(qIdx => answers[qIdx] === null);
+      idx = firstMissingDisplay >= 0 ? firstMissingDisplay : TOTAL - 1;
+      renderQuestion();
+      return;
+    }
+    const scores = computeScores();
+    const level = determineLevel(scores);
+    results = { scores, level, info: levelInfo(level) };
+    activeTab = "client";
+    collectSample(scores);
+    renderResults();
+    setTimeout(() => { sendEmail(); }, 200);
+  }
+
+  function renderLevelsTable(currentLevel, presence) {
+    const rows = LEVELS_SCALE.map(l => {
+      const isMain = l.n === currentLevel;
+      const isPartial = !isMain && presence[l.n];
+      const cls = isMain ? "active" : (isPartial ? "partial" : "");
+      const mark = isMain ? "▶ Основной" : (isPartial ? "◐ Присутствует" : "—");
+      return `<tr class="${cls}"><td><strong>${l.n}. ${l.title}</strong><div style="font-size:.78rem; color:#8b7a65; margin-top:2px;">${mark}</div></td><td class="range">${l.range}</td><td>${l.short}</td></tr>`;
+    }).join("");
+    return `
+      <table class="levels-table"><thead><tr><th>Уровень</th><th>Баллы</th><th>Краткая характеристика</th></tr></thead><tbody>${rows}</tbody></table>
+      <div class="levels-legend"><span class="l-main">Основной уровень</span><span class="l-part">Присутствуют отдельные черты</span><span class="l-none">Не выражен</span></div>`;
+  }
+
+  function renderClientPane(s, info, level) {
+    return `
+      <div class="tab-pane ${activeTab === 'client' ? 'active' : ''}" id="pane-client">
+        <div class="level-title">${info.title}</div>
+        <div class="level-desc">${info.text}</div>
+        <div class="info-card"><h4>💬 Что это значит для вас</h4><p>${generateClientNarrative(s, level)}</p></div>
+        <div class="chart-wrap"><canvas id="radar-client" data-role="radar"></canvas></div>
+        <h3>Шкала уровней</h3>
+        <p style="font-size:.85rem; color:#7b6e64; margin-bottom:8px;">Интегральный структурный балл: <strong>${s.structural.toFixed(2)}</strong> из 5.00.</p>
+        ${renderLevelsTable(level, levelPresence(s))}
+        <h3>Ваши сильные стороны</h3>
+        <div class="info-card strengths"><ul>${generateStrengths(s).map(x => `<li>${x}</li>`).join("")}</ul></div>
+        <h3>Что обращает на себя внимание</h3>
+        <div class="info-card attention"><ul>${generateAttentionPoints(s).map(x => `<li>${x}</li>`).join("")}</ul></div>
+        <h3>Что можно сделать дальше</h3>
+        <div class="info-card"><p>${info.rec}</p></div>
+        <div class="info-card crisis"><h4>🆘 Если нужна срочная помощь</h4><ul>${generateCrisisResources().map(x => `<li>${x}</li>`).join("")}</ul></div>
+        <h3>Ваш профиль по шкалам</h3>
+        ${renderScoreCard("Идентичность", s.identity, "subscale", "bar-struct")}
+        ${renderScoreCard("Примитивные защиты", s.defenses, "subscale", "bar-struct")}
+        ${renderScoreCard("Тестирование реальности", s.reality, "reality", "bar-reality")}
+        ${renderScoreCard("Самость", s.self, "subscale", "bar-struct")}
+        ${renderScoreCard("Межличностное", s.inter, "subscale", "bar-struct")}
+        ${renderScoreCard("Негативная аффективность", s.negAff, "trait", "bar-trait")}
+        ${renderScoreCard("Отстранённость", s.detach, "trait", "bar-trait")}
+        ${renderScoreCard("Антагонизм", s.antag, "trait", "bar-trait")}
+        ${renderScoreCard("Расторможенность", s.disinh, "trait", "bar-trait")}
+        ${renderScoreCard("Психотизм", s.psycho, "trait", "bar-trait")}
+        <div class="disclaimer"><strong>Важно.</strong> Это предварительный скрининг, а не диагноз.</div>
+      </div>`;
+  }
+
+  function renderTherapistPane(s, info, level) {
+    const flags = generateRiskFlags(s);
+    const defenses = generateDefenseProfile(s);
+    const diff = generateDifferential(s, level);
+    const further = generateFurtherAssessment(s, level);
+    const validity = validityReport(s);
+
+    const flagHtml = flags.length
+      ? flags.map(f => `<div class="info-card ${f.level === 'high' ? 'risk-high' : 'risk-medium'}"><span class="badge ${f.level === 'high' ? 'badge-high' : 'badge-med'}">${f.level === 'high' ? 'Высокий риск' : 'Средний риск'}</span><p style="margin-top:6px;">${f.text}</p></div>`).join("")
+      : `<div class="info-card"><p>Красных флагов не выявлено.</p></div>`;
+    const validityHtml = validity.map(v => `<div class="info-card validity-${v.level === 'bad' ? 'bad' : v.level === 'warn' ? 'warn' : 'ok'}"><p>${v.text}</p></div>`).join("");
+    const rawRows = displayOrder.map((qIdx, pos) => {
+      const q = questions[qIdx];
+      const v = answers[qIdx];
+      const cls = v >= 4 ? "v-high" : (v === 3 ? "v-med" : "");
+      const inv = q.inv ? '<span class="inv-mark">ИНВ</span>' : '';
+      return `<tr><td>#${pos+1}</td><td>${subTitles[q.s]}${inv}</td><td class="${cls}">${v ?? "—"}</td><td style="font-size:.78rem; color:#8b7a65;">${q.t}</td></tr>`;
+    }).join("");
+
+    return `
+      <div class="tab-pane ${activeTab === 'therapist' ? 'active' : ''}" id="pane-therapist">
+        <div class="level-title">Клинический профиль · ${info.title}</div>
+        <div class="chart-wrap"><canvas id="radar-therapist" data-role="radar"></canvas></div>
+        <h3>Структурная диагностика (Kernberg)</h3>
+        <div class="info-card">
+          <p><strong>Интегральный структурный балл:</strong> ${s.structural.toFixed(2)} / 5.00</p>
+          <p><strong>Идентичность:</strong> ${s.identity.toFixed(2)} · <strong>Защиты:</strong> ${s.defenses.toFixed(2)} · <strong>Реальность:</strong> ${s.reality.toFixed(2)}</p>
         </div>
-      `;
-      dynamicContent.innerHTML = html;
-      document.getElementById('restart-btn').addEventListener('click', restartTest);
-    }
+        <h3>Уровень функционирования (LPFS)</h3>
+        ${renderScoreCard("Самость", s.self, "subscale", "bar-struct")}
+        ${renderScoreCard("Межличностное", s.inter, "subscale", "bar-struct")}
+        ${renderScoreCard("Общий LPFS", s.lpfs, "subscale", "bar-struct")}
+        <h3>Профиль патологических черт (PID-5)</h3>
+        ${renderScoreCard("Негативная аффективность", s.negAff, "trait", "bar-trait")}
+        ${renderScoreCard("Отстранённость", s.detach, "trait", "bar-trait")}
+        ${renderScoreCard("Антагонизм", s.antag, "trait", "bar-trait")}
+        ${renderScoreCard("Расторможенность", s.disinh, "trait", "bar-trait")}
+        ${renderScoreCard("Психотизм", s.psycho, "trait", "bar-trait")}
+        <h3>✅ Валидность</h3>
+        ${validityHtml}
+        <h3>🚩 Красные флаги</h3>
+        ${flagHtml}
+        <h3>🛡️ Преобладающие защитные механизмы</h3>
+        <div class="info-card"><ul>${defenses.map(d => `<li>${d}</li>`).join("")}</ul></div>
+        <h3>🧭 Дифференциальные гипотезы</h3>
+        <div class="info-card"><ul>${diff.map(d => `<li>${d}</li>`).join("")}</ul></div>
+        <h3>🔬 Рекомендации по дальнейшей диагностике</h3>
+        <div class="info-card"><ul>${further.map(f => `<li>${f}</li>`).join("")}</ul></div>
+        <h3>🧩 Рекомендации по лечению</h3>
+        <div class="info-card"><p>${info.rec}</p></div>
+        <h3>📋 Сырые ответы (в порядке предъявления)</h3>
+        <table class="raw-table"><thead><tr><th>№</th><th>Подшкала</th><th>Ответ</th><th>Формулировка</th></tr></thead><tbody>${rawRows}</tbody></table>
+        <div class="disclaimer" style="margin-top:18px;"><strong>Ограничения.</strong> Скрининг на основе самоотчёта. Не является диагнозом.</div>
+      </div>`;
+  }
 
-    // Инициализация
-    render();
-  })();
+  function renderResults() {
+    const { scores: s, info, level } = results;
+    const samplesCount = countSamples();
+
+    const statusBanner = `
+      <div class="threshold-banner ${THRESHOLDS.status === 'calibrated' ? 'calibrated' : 'empirical'}">
+        <div class="tb-left">
+          <strong>📊 Статус порогов:</strong>
+          ${THRESHOLDS.status === 'calibrated'
+            ? `✓ калиброванные (N=${THRESHOLDS.n}, ${new Date(THRESHOLDS.calibratedAt).toLocaleDateString('ru-RU')})`
+            : `⚠ эмпирические (накоплено ${samplesCount} / 30)`}
+        </div>
+        <div class="tb-right">
+          ${THRESHOLDS.status === 'calibrated'
+            ? `<button id="reset-thr-btn" class="mini-btn">Сбросить к эмпирическим</button>`
+            : `<button id="calibrate-btn" class="mini-btn" ${samplesCount < 30 ? 'disabled' : ''}>Пересчитать пороги</button>`}
+          <label class="mode-select">
+            Режим:
+            <select id="display-mode">
+              <option value="raw" ${DISPLAY_MODE==='raw'?'selected':''}>Только баллы</option>
+              <option value="both" ${DISPLAY_MODE==='both'?'selected':''}>Баллы + интерпретация</option>
+              <option value="interpreted" ${DISPLAY_MODE==='interpreted'?'selected':''}>Только интерпретация</option>
+            </select>
+          </label>
+        </div>
+      </div>`;
+
+    content.innerHTML = `
+      <div class="results-container">
+        <h2 style="font-weight:400; color:#4a3e35; font-size:1.3rem;">📊 Результаты скрининга</h2>
+        ${statusBanner}
+        <div class="tabs">
+          <button class="tab-btn ${activeTab === 'client' ? 'active' : ''}" data-tab="client">👤 Для клиента</button>
+          <button class="tab-btn ${activeTab === 'therapist' ? 'active' : ''}" data-tab="therapist">🩺 Для терапевта</button>
+        </div>
+        ${renderClientPane(s, info, level)}
+        ${renderTherapistPane(s, info, level)}
+        <div class="actions">
+          <button id="csv-btn">📥 CSV</button>
+          <button id="pdf-client-btn">📄 PDF для клиента</button>
+          <button id="pdf-therapist-btn">📄 PDF для терапевта</button>
+        </div>
+        <div id="email-status" class="email-status info">⏳ Отправка результатов...</div>
+        <div class="refs">Концептуальная рамка: Kernberg O. (1984); DSM-5 AMPD; МКБ-11; Preti et al. (LPFS-BF 2.0); Krueger et al. (PID-5-BF); Blüml & Doering (STIPO-R); Marlowe & Crowne (1960).</div>
+        <div class="nav-buttons" style="margin-top:22px;"><button id="restart-btn">🔄 Пройти заново</button></div>
+      </div>`;
+
+    document.querySelectorAll('.tab-btn').forEach(btn => { btn.onclick = () => showTab(btn.dataset.tab); });
+    document.getElementById('calibrate-btn')?.addEventListener('click', () => {
+      if (calibrateThresholds()) { alert(`Пороги пересчитаны на N=${THRESHOLDS.n}.`); renderResults(); }
+    });
+    document.getElementById('reset-thr-btn')?.addEventListener('click', () => {
+      if (confirm('Сбросить калиброванные пороги к эмпирическим?')) { resetThresholds(); renderResults(); }
+    });
+    document.getElementById('display-mode')?.addEventListener('change', (e) => {
+      DISPLAY_MODE = e.target.value;
+      localStorage.setItem('screening_display_mode', DISPLAY_MODE);
+      renderResults();
+    });
+    document.getElementById('csv-btn').onclick = exportCSV;
+    document.getElementById('pdf-client-btn').onclick = exportClientPDF;
+    document.getElementById('pdf-therapist-btn').onclick = exportTherapistPDF;
+    document.getElementById('restart-btn').onclick = () => {
+      answers = new Array(TOTAL).fill(null);
+      idx = 0; results = null; clientName = ""; emailSent = false;
+      activeTab = "client";
+      if (activeChart) { activeChart.destroy(); activeChart = null; }
+      renderIntro();
+    };
+    requestAnimationFrame(() => showTab(activeTab));
+  }
+
+  function showTab(name) {
+    activeTab = name;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.toggle('active', p.id === 'pane-' + name));
+    if (activeChart) { activeChart.destroy(); activeChart = null; }
+    requestAnimationFrame(() => {
+      const canvas = document.querySelector('.tab-pane.active canvas[data-role="radar"]');
+      if (canvas && results) activeChart = buildRadarChart(canvas, name, results.scores);
+    });
+  }
+
+  renderIntro();
+})();
 </script>
 </body>
 </html>
